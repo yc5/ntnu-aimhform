@@ -1,0 +1,324 @@
+﻿@model AIMHtest.ViewModel.ScoreListViewModel
+@using AIMHtest.Models;
+
+@{
+    if (TempData["NoScoreResultMsg"] != null)
+    {
+        <script type="text/javascript">
+            var msg = @Html.Raw(Json.Encode(TempData["NoScoreResultMsg"]));
+            alert(msg);
+        </script>
+    }
+    if (TempData["Msg"] != null)
+    {
+        <script type="text/javascript">
+            var msg = @Html.Raw(Json.Encode(TempData["Msg"]));
+            alert(msg);
+        </script>
+    }
+}
+@{
+    Manager adminData = TempData["AdminData"] as Manager;
+}
+
+<div>
+    <session class="scorelist">
+        <div class="container">
+            <div class="row">
+                <h1>學生量表填答結果列表</h1>
+                <div id="mode-select">
+                    @*<div class="mode-select-btn">
+                            <input type="radio" id="r1" name="r1Val" value="1" />
+                            <label for="r1">比對全國常模</label>
+                        </div>
+                        <div class="mode-select-btn">
+                            <input type="radio" id="r2" name="r1Val" value="2" />
+                            <label for="r2">比對學校常模</label>
+                        </div>*@
+                </div>
+                @using (Ajax.BeginForm("ScoreList", "Manager", new AjaxOptions()))
+                {
+                    <div class="filter-conditions">
+                        <h3>篩選條件</h3>
+                        <div class="filter-item">
+                            施測學年
+                            @Html.DropDownListFor(model => model.SchoolYear, Model.SchoolYear, "(請選擇學年)", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                        </div>
+                        @if (adminData.Rank.Equals("1"))
+                        {
+                            <div class="filter-item">
+                                地區
+                                @Html.DropDownListFor(model => model.Zone, Model.Zone, "(請選擇學校所屬地區)", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                            </div>
+
+                            <div class="filter-item">
+                                學校
+                                @if (Model.SchoolName != null)
+                                {
+                                    @Html.DropDownListFor(model => model.SchoolName, Model.SchoolName, "(請選擇學校)", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                                }
+                                系所
+                                @if (Model.College != null)
+                                {
+                                    @Html.DropDownListFor(model => model.College, Model.College, "(請選擇系所)", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="filter-item">
+                                系所
+                                @if (Model.College != null)
+                                {
+                                    @Html.DropDownListFor(model => model.College, Model.College, "(請選擇系所)", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                                }
+                            </div>
+                        }
+
+
+                        <div class="filter-item">
+                            年級
+                            @if (Model.GradeSelectList != null)
+                            {
+                                @Html.DropDownListFor(model => model.Grade, Model.GradeSelectList, "", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                            }
+                            @*<select class="form-control form-group  filterbar" id="grade" name="grade" , onchange="form.submit();">
+                                    <option value="" selected></option>
+                                    <option value="1">一</option>
+                                    <option value="2">二</option>
+                                    <option value="3">三</option>
+                                    <option value="4">四</option>
+                                    <option value="5">五</option>
+                                    <option value="6">六</option>
+                                    <option value="7">七</option>
+                                </select>*@
+                            班級
+                            <input class="form-control form-group filterbar" name="classname" type="text" />
+                        </div>
+                        <div class="filter-item">
+                            特殊狀況
+                            @if (Model.SpeConditions != null)
+                            {
+                                @Html.DropDownListFor(model => model.SpeConditions, Model.SpeConditions, "", new { @class = "form-control form-group filterbar", onchange = @"form.submit();" })
+                            }
+                            @*<select class="form-control form-group  filterbar" id="speConditions" name="speConditions" onchange="form.submit();">
+                                    <option value="" selected></option>
+                                    <option value="1">高關懷</option>
+                                    <option value="2">高自殺意圖</option>
+                                </select>*@
+                        </div>
+                    </div>
+
+                    @*@using (Ajax.BeginForm("ScoreList", "Manager", new AjaxOptions()))
+                        {
+                            <div class="filter-item">
+                                搜尋學號
+                                <input type="text" class="form-control form-group  filterbar" id="studId" name="studId">
+                                <input type="submit" name="submitType" value="學號搜尋"/>
+                            </div>
+                        }*@
+
+                    <hr>
+                    <div id="file-print">
+                        <input class="file-print-btn" type="submit" value="匯出名單" name="button" />
+                        <input class="file-print-btn" type="submit" value="列印結果" name="button" />
+                        <input class="file-print-btn" type="submit" value="重新填答" name="button" onclick="return reTest()" />
+                    </div>
+                    <div>
+                        <!-- <div class="listnum">總共 200 筆</div> -->
+                        <div class="scorelist-table">
+                            <table width="2000" align="center" border="0" cellspacing="4" cellpadding="4">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                                            <div>
+                                                <form id="form1" name="form1" method="post" action="">
+                                                    <input name="checkboxAll" id="CheckboxAll" type="checkbox">
+                                                    <label for="checkbox"></label>
+                                                </form>
+                                                @*<td colspan="27">總筆數 200 筆</td>*@
+                                            </div>
+                                        </th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">填答時間</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">學號</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">系所</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">姓名</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">性別</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">年級</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">班級</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">同意書</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">施測狀態</th>
+                                        <th rowspan="2" align="center" bgcolor="#CCCCCC"><img src="../../images/pencil.png" width="20" height="20" /></th>
+                                        <th colspan="20" align="center" bgcolor="#CCCCCC">量表各因子成績(平均題分)</th>
+                                    </tr>
+                                    <tr>
+                                        <th align="center" bgcolor="#f8e7c7">效度</th>
+                                        <th align="center" bgcolor="#f8e7c7">AL</th>
+                                        <th align="center" bgcolor="#f8e7c7">D1</th>
+                                        <th align="center" bgcolor="#f8e7c7">D2</th>
+                                        <th align="center" bgcolor="#f8e7c7">F1</th>
+                                        <th align="center" bgcolor="#f8e7c7">F2</th>
+                                        <th align="center" bgcolor="#f8e7c7">F3</th>
+                                        <th align="center" bgcolor="#f8e7c7">F4</th>
+                                        <th align="center" bgcolor="#f8e7c7">S01</th>
+                                        <th align="center" bgcolor="#f8e7c7">S02</th>
+                                        <th align="center" bgcolor="#f8e7c7">S03</th>
+                                        <th align="center" bgcolor="#f8e7c7">S04</th>
+                                        <th align="center" bgcolor="#f8e7c7">S05</th>
+                                        <th align="center" bgcolor="#f8e7c7">S06</th>
+                                        <th align="center" bgcolor="#f8e7c7">S07</th>
+                                        <th align="center" bgcolor="#f8e7c7">S08</th>
+                                        <th align="center" bgcolor="#f8e7c7">S09</th>
+                                        <th align="center" bgcolor="#f8e7c7">S10</th>
+                                        <th align="center" bgcolor="#f8e7c7">S11</th>
+                                        <th align="center" bgcolor="#f8e7c7">S12</th>
+                                    </tr>
+                                </thead>
+                                @if (Model.ScoreListViewModelList != null)
+                                {
+                                    foreach (var item in Model.ScoreListViewModelList)
+                                    {
+                                        <tbody class="listnum">
+                                            <tr>
+                                                <td>
+                                                    @*<input type="checkbox" id="checkboxs" name="checkbox" value="@item.StuIdEncrypt" />*@
+                                                    @*<input type="checkbox" id="checkboxs2" name="checkbox2" value="@item.Sid" hidden/>*@
+                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="@item.Tid,@item.KeyId" />
+                                                    @*<input type="checkbox" id="checkboxs" name="checkbox4" value="@item.KeyId" />*@
+
+                                                </td>
+                                                <td>@item.TestDate.Value.ToString("yyyy-MM-dd")</td>
+                                                <td>
+                                                    @*<a href="@Url.Action("ScoreResult", "Manager", new {tid = item.Tid, sid = item.Sid, uid = item.StuIdEncrypt})">@item.StuId</a>*@
+
+                                                    @*@if (item.TestType.Value)*@
+                                                    @if (item.Tid != null)
+                                                    {
+                                                        <a href="@Url.Action("ScoreResult", "Manager", new {tid = item.Tid, sid = item.Sid, uid = item.StuIdEncrypt})">@item.StuId</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.StuId
+
+                                                    }
+                                                </td>
+                                                <td>@item.CollegeName</td>
+                                                <td>
+                                                    @*@if (item.TestType.Value)*@
+                                                    @if (item.Tid != null)
+                                                    {
+                                                        <a href="@Url.Action("ScoreResult", "Manager", new {tid = item.Tid, sid = item.Sid, uid = item.StuIdEncrypt})">@item.StuName</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.StuName
+
+                                                    }
+                                                </td>
+                                                <td>@item.Gender</td>
+                                                <td>@item.Grade</td>
+                                                <td>@item.ClassName</td>
+                                                @if (@item.UserCheck == true)
+                                                {
+                                                    <td>同意</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>不同意</td>
+                                                }
+                                                <td>@item.NowTestType</td>
+                                                <td>
+                                                    @if (item.Qa == true)
+                                                    {
+                                                        @Html.ActionLink("編輯", "EditStudentDataPage", new { sid = item.Sid, uid = item.StuIdEncrypt })<text>|</text>
+                                                        @Html.ActionLink("刪除", "StdRemovePage", new { sid = item.Sid, uid = item.StuIdEncrypt })
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>無資料</p>
+                                                    }
+                                                </td>
+                                                <td>@item.VkScore</td>
+                                                <td>@item.AllScoreAvg</td>
+                                                <td>@item.D1ScoreAvg</td>
+                                                <td>@item.D2ScoreAvg</td>
+                                                <td>@item.F1ScoreAvg</td>
+                                                <td>@item.F2ScoreAvg</td>
+                                                <td>@item.F3ScoreAvg</td>
+                                                <td>@item.F4ScoreAvg</td>
+                                                <td>@item.S1ScoreAvg</td>
+                                                <td>@item.S2ScoreAvg</td>
+                                                <td>@item.S3ScoreAvg</td>
+                                                <td>@item.S4ScoreAvg</td>
+                                                <td>@item.S5ScoreAvg</td>
+                                                <td>@item.S6ScoreAvg</td>
+                                                <td>@item.S7ScoreAvg</td>
+                                                <td>@item.S8ScoreAvg</td>
+                                                <td>@item.S9ScoreAvg</td>
+                                                <td>@item.S10ScoreAvg</td>
+                                                <td>@item.S11ScoreAvg</td>
+                                                <td>@item.S12ScoreAvg</td>
+                                        </tbody>
+
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+        <!-- <button class="readmore-btn">
+            <a href="#">載入更多</a>
+        </button> -->
+        <!--分頁按鈕-->
+        @*<div class="page-controller">
+                <button class="pre-page"></button>
+                <button class="primary-page primary-page-on">1</button>
+                <button class="not-the-page">2</button>
+                <button class="next-page"></button>
+            </div>*@
+    </session>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $('#CheckboxAll').click(function() {
+            //$("input[name='checkbox'").prop("checked", $(this).prop("checked"));
+            //$("input[name='checkbox2'").prop("checked", $(this).prop("checked"));
+            $("input[name='checkbox3").prop("checked", $(this).prop("checked"));
+            // $("input[name='checkbox4").prop("checked", $(this).prop("checked"));
+        });
+
+        //$('input[name=checkbox3]').on('click', function() {
+        //    var url = $(this).attr('data-url');
+        //    var status = $(this).is(':checked');
+        //    console.log($(this));
+        //    $('input[name=checkbox4]').on(function() {
+        //        var self = $(this);
+        //        console.log(self);
+        //        if (self.attr('data-url') === url) {
+        //            if (status === true) {
+        //                self.prop('checked', true);
+        //            } else {
+        //                self.prop('checked', false);
+        //            }
+        //        }
+        //    });
+        //});
+    });
+
+    function reTest() {
+        var reTestMsg = "確定要設定\"重新施測\"嗎?";
+        if (confirm(reTestMsg) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+@* ---------------------------------------------------- *@
+
+
+
