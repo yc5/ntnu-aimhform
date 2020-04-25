@@ -1,3 +1,190 @@
+$(document).ready(function(e){
+    $(".card-box").addClass("normal-box");
+    console.log("Gogo");
+    
+
+});
+
+$("form").submit(function(){
+
+  alert("OMG");
+});
+
+$(window).click(function () {
+  //驗正年齡
+  var birth = new Date($("#birthday").val());
+
+  if (birth) {
+    var calyear = 1000 * 60 * 60 * 24 * 365;
+    var calnow = new Date();
+    var calbirthday = new Date(birth);
+    var age = parseInt((calnow - calbirthday) / calyear);
+    console.log(age);
+    if (age < 15) {
+      alert("生日資料不正確，請重新輸入!");
+      $("#birthday").val("");
+    }
+  }
+
+  //學制
+  var school = document.getElementsByName("school");
+  var schoth = document.getElementsByName("schoth");
+  if (school[5].checked) {
+    $("#schoth").attr("required", "required");
+    // console.log(schoth[0].required);
+    //console.log(schoth[0].value);
+  } else {
+    $("#schoth").removeAttr("required");
+    schoth[0].value = null;
+    //console.log(schoth[0].required);
+    //console.log(schoth[0].value);
+  }
+  //入學方式
+  var OnSchool = document.getElementsByName("OnSchool");
+  if (OnSchool[8].checked) {
+    $("#onsoth").attr("required", "required");
+  } else {
+    $("#onsoth").removeAttr("required");
+    $("#onsoth").val(null);
+  }
+  //身分別
+  var Identity = document.getElementsByName("Identity");
+  if (Identity[2].checked) {
+    $("#ideoth1").attr("required", "required");
+  } else {
+    $("#ideoth1").removeAttr("required");
+    $("#ideoth1").val(null);
+  }
+  if (Identity[3].checked) {
+    $("#ideoth2").attr("required", "required");
+  } else {
+    $("#ideoth2").removeAttr("required");
+    $("#ideoth2").val(null);
+  }
+  if (Identity[4].checked) {
+    $("#ideoth3").attr("required", "required");
+  } else {
+    $("#ideoth3").removeAttr("required");
+    $("#ideoth3").val(null);
+  }
+  if (Identity[5].checked) {
+    $("#ideoth4").attr("required", "required");
+  } else {
+    $("#ideoth4").removeAttr("required");
+    $("#ideoth4").val(null);
+  }
+  if (Identity[6].checked) {
+    $("#ideoth5").attr("required", "required");
+  } else {
+    $("#ideoth5").removeAttr("required");
+    $("#ideoth5").val(null);
+  }
+
+  //住宿狀況
+  var live = document.getElementsByName("live");
+  var live1 = document.getElementsByName("live1");
+  var live2 = document.getElementsByName("live2");
+  if (!live[1].checked) {
+    live1[0].checked = false;
+    live1[1].checked = false;
+  }
+  if (!live[2].checked) {
+    live2[0].checked = false;
+    live2[1].checked = false;
+  }
+  //child
+  if (live[1].checked) {
+    live1[0].required = true;
+    live1[1].required = true;
+  } else {
+    live1[0].required = false;
+    live1[1].required = false;
+  }
+  if (live[2].checked) {
+    live2[0].required = true;
+    live2[1].required = true;
+  } else {
+    live2[0].required = false;
+    live2[1].required = false;
+  }
+  //text
+  if (live[4].checked) {
+    $("#textlive").attr("required", "required");
+  } else {
+    $("#textlive").removeAttr("required");
+    $("#textlive").val(null);
+  }
+
+  //父母婚姻狀況
+  var marriage = document.getElementsByName("marriage");
+  //var marriage1 = document.getElementsByName('marriage1');
+  //var marriage2 = document.getElementsByName('marriage2');
+  //if (!marriage[0].checked) {
+  //    marriage1[0].checked = false;
+  //    marriage1[1].checked = false;
+  //}
+  //if (!marriage[1].checked) {
+  //    marriage2[0].checked = false;
+  //    marriage2[1].checked = false;
+  //}
+  ////child
+  //if (marriage[0].checked) {
+  //    marriage1[0].required = true;
+  //    marriage1[1].required = true;
+
+  //} else {
+  //    marriage1[0].required = false;
+  //    marriage1[1].required = false;
+  //}
+  //if (marriage[1].checked) {
+  //    marriage2[0].required = true;
+  //    marriage2[1].required = true;
+
+  //} else {
+  //    marriage2[0].required = false;
+  //    marriage2[1].required = false;
+  //}
+  //text
+  if (marriage[4].checked) {
+    $("#maroth").attr("required", "required");
+  } else {
+    $("#maroth").removeAttr("required");
+    $("#maroth").val(null);
+  }
+  //父親國籍
+  //var country = document.getElementsByName('country');
+  //if (country[1].checked)
+  //    {
+  //    $("#couoth").attr("required", "required");
+  //} else {
+  //    $("#couoth").removeAttr("required");
+  //    $("#couoth").val(null);
+  //}
+  //母親國籍
+  //var country1 = document.getElementsByName('country1');
+  //if (country1[1].checked) {
+  //    $("#couoth1").attr("required", "required");
+  //} else {
+  //    $("#couoth1").removeAttr("required");
+  //    $("#couoth1").val(null);
+  //}
+  //money
+  //var money = document.getElementsByName('money');
+  //if (money[5].checked) {
+  //    $("#moneyoth").attr("required", "required");
+  //} else {
+  //    $("#moneyoth").removeAttr("required");
+  //    $("#moneyoth").val(null);
+  //}
+
+  //判斷班級字元數
+  var classname = $("#classname").val();
+  if (classname.length > 10) {
+    alert("班級名稱限制10個字內!");
+    $("#classname").val("");
+  }
+});
+
 $("#checkbox2").click(function () {
   if (confirm("您選擇不同意，按下確定後將會立即返回首頁。")) {
     console.log("checkNO");

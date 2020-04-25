@@ -10,6 +10,7 @@
     <!-- jQuery  -->
     <script src="./Scripts/jquery.min.js"></script>
     <script src="./Scripts/bootstrap.min.js"></script>
+    <script async src="./bundle.js"></script>
 
     <!-- parsley  -->
     <script src="./Scripts/parsley.js" type="text/javascript"></script>
@@ -18,6 +19,7 @@
     <link href="./Content/bookstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="./Content/icons.css" rel="stylesheet" type="text/css" />
     <link href="./Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="./bundle.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -43,189 +45,6 @@
 
                 
 
-<script type="text/javascript">
-    $(".card-box").addClass("normal-box");
-
-    $(window).click(function() {
-
-        //驗正年齡
-        var birth = new Date($("#birthday").val());
-
-        if (birth) {
-            var calyear = 1000 * 60 * 60 * 24 * 365;
-            var calnow = new Date();
-            var calbirthday = new Date(birth);
-            var age = parseInt((calnow - calbirthday) / calyear);
-            console.log(age);
-            if (age < 15) {
-                alert("生日資料不正確，請重新輸入!");
-                $("#birthday").val('');
-            }
-        }
-
-
-        //學制
-        var school = document.getElementsByName('school');
-        var schoth = document.getElementsByName('schoth');
-        if (school[5].checked) {
-            $("#schoth").attr("required", "required");
-            // console.log(schoth[0].required);
-            //console.log(schoth[0].value);
-        } else {
-            $("#schoth").removeAttr("required");
-            schoth[0].value = null;
-            //console.log(schoth[0].required);
-            //console.log(schoth[0].value);
-        }
-        //入學方式
-        var OnSchool = document.getElementsByName('OnSchool');
-        if (OnSchool[8].checked) {
-            $("#onsoth").attr("required", "required");
-        } else {
-            $("#onsoth").removeAttr("required");
-            $("#onsoth").val(null);
-        }
-        //身分別
-        var Identity = document.getElementsByName('Identity');
-        if (Identity[2].checked) {
-            $("#ideoth1").attr("required", "required");
-        } else {
-            $("#ideoth1").removeAttr("required");
-            $("#ideoth1").val(null);
-        }
-        if (Identity[3].checked) {
-            $("#ideoth2").attr("required", "required");
-        } else {
-            $("#ideoth2").removeAttr("required");
-            $("#ideoth2").val(null);
-        }
-        if (Identity[4].checked) {
-            $("#ideoth3").attr("required", "required");
-        } else {
-            $("#ideoth3").removeAttr("required");
-            $("#ideoth3").val(null);
-        }
-        if (Identity[5].checked) {
-            $("#ideoth4").attr("required", "required");
-        } else {
-            $("#ideoth4").removeAttr("required");
-            $("#ideoth4").val(null);
-        }
-        if (Identity[6].checked) {
-            $("#ideoth5").attr("required", "required");
-        } else {
-            $("#ideoth5").removeAttr("required");
-            $("#ideoth5").val(null);
-        }
-
-        //住宿狀況
-        var live = document.getElementsByName('live');
-        var live1 = document.getElementsByName('live1');
-        var live2 = document.getElementsByName('live2');
-        if (!live[1].checked) {
-            live1[0].checked = false;
-            live1[1].checked = false;
-        }
-        if (!live[2].checked) {
-            live2[0].checked = false;
-            live2[1].checked = false;
-        }
-        //child
-        if (live[1].checked) {
-            live1[0].required = true;
-            live1[1].required = true;
-
-        } else {
-            live1[0].required = false;
-            live1[1].required = false;
-        }
-        if (live[2].checked) {
-            live2[0].required = true;
-            live2[1].required = true;
-
-        } else {
-            live2[0].required = false;
-            live2[1].required = false;
-        }
-        //text
-        if (live[4].checked) {
-            $("#textlive").attr("required", "required");
-        } else {
-            $("#textlive").removeAttr("required");
-            $("#textlive").val(null);
-        }
-
-        //父母婚姻狀況
-        var marriage = document.getElementsByName('marriage');
-        //var marriage1 = document.getElementsByName('marriage1');
-        //var marriage2 = document.getElementsByName('marriage2');
-        //if (!marriage[0].checked) {
-        //    marriage1[0].checked = false;
-        //    marriage1[1].checked = false;
-        //}
-        //if (!marriage[1].checked) {
-        //    marriage2[0].checked = false;
-        //    marriage2[1].checked = false;
-        //}
-        ////child
-        //if (marriage[0].checked) {
-        //    marriage1[0].required = true;
-        //    marriage1[1].required = true;
-
-        //} else {
-        //    marriage1[0].required = false;
-        //    marriage1[1].required = false;
-        //}
-        //if (marriage[1].checked) {
-        //    marriage2[0].required = true;
-        //    marriage2[1].required = true;
-
-        //} else {
-        //    marriage2[0].required = false;
-        //    marriage2[1].required = false;
-        //}
-        //text
-        if (marriage[4].checked) {
-            $("#maroth").attr("required", "required");
-        } else {
-            $("#maroth").removeAttr("required");
-            $("#maroth").val(null);
-        }
-        //父親國籍
-        //var country = document.getElementsByName('country');
-        //if (country[1].checked)
-        //    {
-        //    $("#couoth").attr("required", "required");
-        //} else {
-        //    $("#couoth").removeAttr("required");
-        //    $("#couoth").val(null);
-        //}
-        //母親國籍
-        //var country1 = document.getElementsByName('country1');
-        //if (country1[1].checked) {
-        //    $("#couoth1").attr("required", "required");
-        //} else {
-        //    $("#couoth1").removeAttr("required");
-        //    $("#couoth1").val(null);
-        //}
-        //money
-        //var money = document.getElementsByName('money');
-        //if (money[5].checked) {
-        //    $("#moneyoth").attr("required", "required");
-        //} else {
-        //    $("#moneyoth").removeAttr("required");
-        //    $("#moneyoth").val(null);
-        //}
-
-        //判斷班級字元數
-        var classname = $("#classname").val();
-        if (classname.length > 10) {
-            alert("班級名稱限制10個字內!");
-            $("#classname").val('');
-        }
-    });
-</script>    
-
 <form action="/AIMHcreate/CreateData" method="post">    <div class="alert alert-success fade show m-b-0">
         <h2 class="text-success">個人資料蒐集、處理及利用說明</h2>
         <ol>
@@ -243,13 +62,13 @@
         </ul>
         <div class="checkbox-danger">
             <div class="radio radio-primary ">
-                <input id="checkbox" name="usecheck" value="1" required="" type="radio">
+                <input id="checkbox" name="usecheck" value="1" type="radio">
                 <label for="checkbox">我同意上述宣告</label>
             </div>
             <div class="radio radio-primary ">
 
                 
-                <input id="checkbox2" name="usecheck" value="0" required="" type="radio">
+                <input id="checkbox2" name="usecheck" value="0" type="radio">
                 <label for="checkbox2" >我不同意上述宣告</label>
 
             </div>
@@ -264,7 +83,7 @@
         <label class="col-2 col-form-label">．性別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="gender" id="radio3" value="1" required>
+                <input type="radio" name="gender" id="radio3" value="1" >
                 <label class="col" for="radio3">男</label>
             </div>
             <div class="radio radio-primary ">
@@ -280,14 +99,14 @@
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．出生日期：</label>
         <div class="col-10">
-            <input id="birthday" class="form-control" type="date" name="date" required>
+            <input id="birthday" class="form-control" type="date" name="date" >
         </div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．學制：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="school" id="radio13" value="1" required>
+                <input type="radio" name="school" id="radio13" value="1" >
                 <label class="col" for="radio13">學士(含四技/二技)</label>
             </div>
             <div class="radio radio-primary ">
@@ -318,7 +137,7 @@
         <label class="col-2 col-form-label">．系所名稱：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <select class="form-control form-group-Quest" id="College" name="College" required="required"><option></option>
+                <select class="form-control form-group-Quest" id="College" name="College" ><option></option>
 <option>土木與水資源工程學系</option>
 <option>中國文學系</option>
 <option>公共政策研究所</option>
@@ -372,11 +191,11 @@
             </div>
         </div>
     </div>
-    <div class="form-group-Quest row">
+    <div class="form-group-Quest row xstar-validate-error">
         <label class="col-2 col-form-label">．年級：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio6" value="1" required>
+                <input type="radio" name="sclass" id="radio6" value="1" >
                 <label class="col" for="radio6">一</label>
             </div>
             <div class="radio radio-primary">
@@ -419,7 +238,7 @@
         <label class="col-2 col-form-label">．入學方式：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio22" value="1" required>
+                <input type="radio" name="OnSchool" id="radio22" value="1" >
                 <label class="col" for="radio22">繁星推薦</label>
             </div>
             <div class="radio radio-primary ">
@@ -473,7 +292,7 @@
         <label class="col-2 col-form-label">．身分別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio31" value="1" required>
+                <input type="radio" name="Identity" id="radio31" value="1" >
                 <label class="col" for="radio31">一般生</label>
             </div>
             <div class="radio radio-primary ">
@@ -521,7 +340,7 @@
         <label class="col-2 col-form-label">．住宿狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio38" value="1" required>
+                <input type="radio" name="live" id="radio38" value="1" >
                 <label class="col" for="radio38">住校(學校宿舍)</label>
             </div>
             <div class="radio radio-primary   form-check-inline">
@@ -550,7 +369,7 @@
                 <label class="col" for="radio43">獨居)</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio82" value="5" required>
+                <input type="radio" name="live" id="radio82" value="5" >
                 <label class="col" for="radio82">尚未確定</label>
             </div>
             <div class="radio radio-primary ">
@@ -564,7 +383,7 @@
         <label class="col-2 col-form-label">．父母婚姻狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary  form-check-inline ">
-                <input type="radio" name="marriage" id="radio46" value="1" required>
+                <input type="radio" name="marriage" id="radio46" value="1" >
                 <label class="col" for="radio46">已婚同居</label>
             </div>
             <div class="radio radio-primary  form-check-inline ">
@@ -597,7 +416,7 @@
         <label class="col-2 col-form-label">．父親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio54" value="1" required>
+                <input type="radio" name="edu" id="radio54" value="1" >
                 <label class="col" for="radio54">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
@@ -635,7 +454,7 @@
         <label class="col-2 col-form-label">．母親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="edu2" id="radio62" value="1" required>
+                <input type="radio" name="edu2" id="radio62" value="1" >
                 <label class="col" for="radio62">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
