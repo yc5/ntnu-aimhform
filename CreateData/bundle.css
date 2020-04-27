@@ -1,3 +1,7 @@
 .xstar-validate-error{
     border: red 1px solid;
 }
+
+.row.parsley-error{
+    border: #00BCD4 solid 2px;
+}

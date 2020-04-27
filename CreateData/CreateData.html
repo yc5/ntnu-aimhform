@@ -62,7 +62,7 @@
         </ul>
         <div class="checkbox-danger">
             <div class="radio radio-primary ">
-                <input id="checkbox" name="usecheck" value="1" type="radio" required>
+                <input id="checkbox" name="usecheck" value="1" type="radio" required data-parsley-errors-container="#parssley-error-msg-usecheck">
                 <label for="checkbox">我同意上述宣告</label>
             </div>
             <div class="radio radio-primary ">
@@ -73,6 +73,7 @@
 
             </div>
         </div>
+        <div id="parssley-error-msg-usecheck"></div>
     </div>
     <hr>
     <h1>基本資料填寫</h1>
@@ -83,7 +84,7 @@
         <label class="col-2 col-form-label">．性別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="gender" id="radio3" value="1" required >
+                <input type="radio" name="gender" id="radio3" value="1" required data-parsley-errors-container="#parssley-error-msg-gender" data-parsley-class-handler=".form-group-Quest:nth-child(1)">
                 <label class="col" for="radio3">男</label>
             </div>
             <div class="radio radio-primary ">
@@ -95,18 +96,20 @@
                 <label class="col" for="radio5">其他</label>
             </div>
         </div>
+        <div id="parssley-error-msg-gender"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．出生日期：</label>
         <div class="col-10">
-            <input id="birthday" class="form-control" type="date" name="date" required >
+            <input id="birthday" class="form-control" type="date" name="date" required  data-parsley-errors-container="#parssley-error-msg-birthday">
         </div>
+        <div id="parssley-error-msg-birthday"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．學制：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="school" id="radio13" value="1" required >
+                <input type="radio" name="school" id="radio13" value="1" required data-parsley-errors-container="#parssley-error-msg-school" data-parsley-class-handler=".form-group-Quest:nth-child(3)">
                 <label class="col" for="radio13">學士(含四技/二技)</label>
             </div>
             <div class="radio radio-primary ">
@@ -132,12 +135,13 @@
                 <input type="text" class="form-control" name="schoth" id="schoth">
             </div>
         </div>
+        <div id="parssley-error-msg-school"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．系所名稱：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <select class="form-control form-group-Quest" id="College" name="College" required><option></option>
+                <select class="form-control form-group-Quest" id="College" name="College" required data-parsley-errors-container="#parssley-error-msg-College" data-parsley-class-handler=".form-group-Quest:nth-child(4)"><option></option>
 <option>土木與水資源工程學系</option>
 <option>中國文學系</option>
 <option>公共政策研究所</option>
@@ -190,12 +194,13 @@
                 
             </div>
         </div>
+        <div id="parssley-error-msg-College"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．年級：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio6" value="1" required >
+                <input type="radio" name="sclass" id="radio6" value="1" required data-parsley-errors-container="#parssley-error-msg-sclass" data-parsley-class-handler=".form-group-Quest:nth-child(5)">
                 <label class="col" for="radio6">一</label>
             </div>
             <div class="radio radio-primary">
@@ -227,18 +232,20 @@
                 <label class="col" for="radio83">其他</label>
             </div>
         </div>
+        <div id="parssley-error-msg-sclass"></div>
     </div>
         <div class="form-group-Quest row">
             <label class="col-2 col-form-label">．班級名稱：</label>
             <div class="col-10">
-                <input class="form-control text-left" name="classname" id="classname" type="text" required >
+                <input class="form-control text-left" name="classname" id="classname" type="text" required data-parsley-errors-container="#parssley-error-msg-classname">
             </div>
+            <div id="parssley-error-msg-classname"></div>
         </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．入學方式：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio22" value="1" required >
+                <input type="radio" name="OnSchool" id="radio22" value="1" required data-parsley-errors-container="#parssley-error-msg-OnSchool" data-parsley-class-handler=".form-group-Quest:nth-child(7)">
                 <label class="col" for="radio22">繁星推薦</label>
             </div>
             <div class="radio radio-primary ">
@@ -287,12 +294,13 @@
                 <label class="col" for="radio86">免試入學</label>
             </div>
         </div>
+        <div id="parssley-error-msg-OnSchool"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．身分別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio31" value="1" required >
+                <input type="radio" name="Identity" id="radio31" value="1" required data-parsley-errors-container="#parssley-error-msg-Identity" data-parsley-class-handler=".form-group-Quest:nth-child(8)">
                 <label class="col" for="radio31">一般生</label>
             </div>
             <div class="radio radio-primary ">
@@ -335,12 +343,13 @@
                 </label>
             </div>
         </div>
+        <div id="parssley-error-msg-Identity"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．住宿狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio38" value="1"  required>
+                <input type="radio" name="live" id="radio38" value="1"  required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio38">住校(學校宿舍)</label>
             </div>
             <div class="radio radio-primary   form-check-inline">
@@ -348,8 +357,9 @@
                 <label class="col" for="radio39">校外租賃</label>
             </div>
             <div class="radio radio-primary form-check-inline " style="display: none;">
+                <span style="position: relative;top: 1.5em;left: -0.5em;">(</span>
                 <input type="radio" name="live1" id="radio44" value="1">
-                <label class="col" for="radio44">(有室友</label>
+                <label class="col" for="radio44">有室友</label>
             </div>
             <div class="radio radio-primary  form-check-inline" style="display: none;">
                 <input type="radio" name="live1" id="radio45" value="2" >
@@ -361,8 +371,9 @@
                 <label class="col" for="radio40">住父母、親友或自己家中</label>
             </div>
             <div class="radio radio-primary form-check-inline " style="display: none;">
+                <span style="position: relative;top: 1.5em;left: -0.5em;">(</span>
                 <input type="radio" name="live2" id="radio42" value="1" >
-                <label class="col" for="radio42">(有家人同住</label>
+                <label class="col" for="radio42">有家人同住</label>
             </div>
             <div class="radio radio-primary form-check-inline " style="display: none;">
                 <input type="radio" name="live2" id="radio43" value="2">
@@ -378,12 +389,13 @@
                 <input type="text" class="form-control" name="textlive" id="textlive">
             </div>
         </div>
+        <div id="parssley-error-msg-live"></div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．父母婚姻狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary  form-check-inline ">
-                <input type="radio" name="marriage" id="radio46" value="1" required >
+                <input type="radio" name="marriage" id="radio46" value="1" required data-parsley-errors-container="#parssley-error-msg-marriage" data-parsley-class-handler=".form-group-Quest:nth-child(10)">
                 <label class="col" for="radio46">已婚同居</label>
             </div>
             <div class="radio radio-primary  form-check-inline ">
@@ -410,13 +422,14 @@
                 <input type="text" class="form-control" name="maroth" id="maroth">
             </div>
         </div>
+        <div id="parssley-error-msg-marriage"></div>
     </div>
     
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．父親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio54" value="1" required >
+                <input type="radio" name="edu" id="radio54" value="1" required data-parsley-errors-container="#parssley-error-msg-edu" data-parsley-class-handler=".form-group-Quest:nth-child(11)">
                 <label class="col" for="radio54">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
@@ -448,13 +461,14 @@
                 <label class="col" for="radio61">不詳</label>
             </div>
         </div>
+        <div id="parssley-error-msg-edu"></div>
     </div>
     
-    <div class="form-group row">
+    <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．母親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="edu2" id="radio62" value="1" required >
+                <input type="radio" name="edu2" id="radio62" value="1" required data-parsley-errors-container="#parssley-error-msg-edu2" data-parsley-class-handler=".form-group-Quest:nth-child(12)">
                 <label class="col" for="radio62">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
@@ -486,6 +500,7 @@
                 <label class="col" for="radio69">不詳</label>
             </div>
         </div>
+        <div id="parssley-error-msg-edu2"></div>
     </div>
     
     
