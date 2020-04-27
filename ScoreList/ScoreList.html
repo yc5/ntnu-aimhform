@@ -1,737 +1,909 @@
-
-    <!DOCTYPE html>
-
+<!DOCTYPE html>
 
 <html>
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>大專校院學生心理健康關懷量表 :: 管理後台</title>
     <link href="WebsiteStyle.css" rel="stylesheet" type="text/css" />
     <script src="jquery.min.js"></script>
-
-</head>
-<body>
+  </head>
+  <body>
     <!-- Pre-loader -->
     <div class="preloader" style="display: none;">
-        <div class="status" style="display: none;">&nbsp;</div>
+      <div class="status" style="display: none;">&nbsp;</div>
     </div>
     <div id="wrapper">
-        <div id="header">
-            <nav class="navbar navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand logo" href="#">大專校院學生心理健康關懷量表 :: 管理後台</a>
-                    <div style="color: #fff; float: right; margin-top: 3px;">  </div>
-                </div>
-            </nav>
-        </div>
-        <div id="middle">
-            <div class="container">
-                <div class="row">
-                    <session class="tool">
-                            <h2>Hello,系統總管理者</h2>
-                        <div class="admin-tool">
-                            <ul>
-                                <li><a href="/Manager/Logout">登出</a></li>
-                                        <li><a href="/Manager/AccountMag">管理帳號設定</a></li>
-                                <li><a href="/Manager/ScoreList">所有學生量表結果</a></li>
-                                <li><a href="/Manager/ScaleInfo">量表因素說明</a></li>
-                            </ul>
-                        </div>
-                    </session>
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-            
-
-
-
-
-
-<div>
-    <session class="scorelist">
+      <div id="header">
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand logo" href="#"
+              >大專校院學生心理健康關懷量表 :: 管理後台</a
+            >
+            <div style="color: #fff; float: right; margin-top: 3px;"></div>
+          </div>
+        </nav>
+      </div>
+      <div id="middle">
         <div class="container">
-            <div class="row">
-                <h1>學生量表填答結果列表</h1>
-                <div id="mode-select">
-                    
-                </div>
-<form action="/Manager/ScoreList" data-ajax="true" id="form0" method="post">                    <div class="filter-conditions">
-                        <h3>篩選條件</h3>
-                        <div class="filter-item">
-                            施測學年
-                            <select class="form-control form-group filterbar" id="SchoolYear" name="SchoolYear" onchange="form.submit();"><option value="">(請選擇學年)</option>
-<option value="1">107學年</option>
-<option selected="selected" value="2">108學年</option>
-<option value="3">109學年</option>
-<option value="4">110學年</option>
-<option value="5">111學年</option>
-<option value="6">112學年</option>
-<option value="7">113學年</option>
-<option value="8">114學年</option>
-<option value="9">115學年</option>
-</select>
-                        </div>
-                            <div class="filter-item">
-                                地區
-                                <select class="form-control form-group filterbar" id="Zone" name="Zone" onchange="form.submit();"><option value="">(請選擇學校所屬地區)</option>
-<option>嘉義市</option>
-<option>桃園市</option>
-<option selected="selected">臺北市</option>
-<option>新北市</option>
-<option>嘉義縣</option>
-<option>新竹縣</option>
-<option>新竹市</option>
-<option>花蓮縣</option>
-<option>臺南市</option>
-<option>高雄市</option>
-<option>基隆市</option>
-<option>南投縣</option>
-<option>宜蘭縣</option>
-<option>苗栗縣</option>
-<option>雲林縣</option>
-<option>臺中市</option>
-<option>屏東縣</option>
-<option>彰化縣</option>
-<option>臺東縣</option>
-</select>
-                            </div>
-                            <div class="filter-item">
-                                學校
-<select class="form-control form-group filterbar" id="SchoolName" name="SchoolName" onchange="form.submit();"><option value="">(請選擇學校)</option>
-<option>中國文化大學</option>
-<option>中國科技大學</option>
-<option>東吳大學</option>
-<option>國立臺北商業大學</option>
-<option>國立臺北教育大學</option>
-<option>國立臺北藝術大學</option>
-<option>國立臺北護理健康大學</option>
-<option selected="selected">國立臺灣師範大學</option>
-<option>臺北城市科技大學</option>
-<option>臺北醫學大學</option>
-<option>臺灣神學院研究學院</option>
-<option>銘傳大學</option>
-</select>                                系所
-<select class="form-control form-group filterbar" id="College" name="College" onchange="form.submit();"><option value="">(請選擇系所)</option>
-<option>人類發展與家庭學系</option>
-<option>大眾傳播研究所</option>
-<option>工業教育學系</option>
-<option>公民教育與活動領導學系</option>
-<option>化學系</option>
-<option>民族音樂研究所</option>
-<option>生命科學系</option>
-<option>生物多樣性國際研究生博士學位學程</option>
-<option>企業管理學系</option>
-<option>光電科技研究所</option>
-<option>全球經營與策略研究所</option>
-<option>地球科學系</option>
-<option>地理學系</option>
-<option>東亞學系－政治與經濟組</option>
-<option>物理學系</option>
-<option>社會工作學研究所</option>
-<option>社會教育學系</option>
-<option>表演藝術研究所</option>
-<option>政治學研究所</option>
-<option>流行音樂產業碩士專班</option>
-<option>科技應用與人力資源發展學系</option>
-<option>科學教育研究所</option>
-<option>美術學系</option>
-<option>英語學系－文學組</option>
-<option>音樂學系</option>
-<option>海洋環境科技研究所</option>
-<option>特殊教育學系</option>
-<option>健康促進與衛生教育學系</option>
-<option>國文學系</option>
-<option>國際人力資源發展研究所</option>
-<option>國際企業管理雙碩士學位學程</option>
-<option>教育心理與輔導學系</option>
-<option>教育政策與行政研究所</option>
-<option>教育學系</option>
-<option>教育學院創造力發展碩士在職專班</option>
-<option>設計學系</option>
-<option>復健諮商研究所</option>
-<option>華語文教學系</option>
-<option>資訊工程學系</option>
-<option>資訊教育研究所</option>
-<option>運動休閒與餐旅管理研究所</option>
-<option>運動競技學系－運動科學碩士班</option>
-<option>電機工程學系</option>
-<option>圖文傳播學系</option>
-<option>圖書資訊學研究所</option>
-<option>管理研究所</option>
-<option>管理學院高階經理人企業管理碩士在職專班</option>
-<option>管理學院國際時尚高階管理碩士在職專班</option>
-<option>臺灣史研究所</option>
-<option>臺灣語文學系</option>
-<option>數學系</option>
-<option>歐洲文化與觀光研究所</option>
-<option>課程與教學研究所</option>
-<option>機電工程學系</option>
-<option>歷史學系</option>
-<option>應用華語文學系</option>
-<option>環境教育研究所</option>
-<option>翻譯研究所</option>
-<option>藝術史研究所</option>
-<option>體育學系</option>
-</select>                            </div>
-
-
-                        <div class="filter-item">
-                            年級
-<select class="form-control form-group filterbar" id="Grade" name="Grade" onchange="form.submit();"><option value=""></option>
-<option value="1">一</option>
-<option value="2">二</option>
-<option value="3">三</option>
-<option value="4">四</option>
-<option value="5">五</option>
-<option value="6">六</option>
-<option value="7">七</option>
-<option value="8">其他</option>
-</select>                            班級
-                            <input class="form-control form-group filterbar" name="classname" type="text" />
-                        </div>
-                        <div class="filter-item">
-                            特殊狀況
-<select class="form-control form-group filterbar" id="SpeConditions" name="SpeConditions" onchange="form.submit();"><option value=""></option>
-<option value="1">高關懷</option>
-<option value="2">高自殺意圖</option>
-</select>                        </div>
-                    </div>
-                    <hr>
-                    <div id="file-print">
-                        <input class="file-print-btn" type="submit" value="匯出名單" name="button" />
-                        <input class="file-print-btn" type="submit" value="列印結果" name="button" />
-                        <input class="file-print-btn" type="submit" value="重新填答" name="button" onclick="return reTest()" />
-                    </div>
-                    <div>
-                        <!-- <div class="listnum">總共 200 筆</div> -->
-                        <div class="scorelist-table">
-                            <table width="2000" align="center" border="0" cellspacing="4" cellpadding="4">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">
-                                            <div>
-                                                <form id="form1" name="form1" method="post" action="">
-                                                    <input name="checkboxAll" id="CheckboxAll" type="checkbox">
-                                                    <label for="checkbox"></label>
-                                                </form>
-                                                
-                                            </div>
-                                        </th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">填答時間</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">學號</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">系所</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">姓名</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">性別</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">年級</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">班級</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">同意書</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC">施測狀態</th>
-                                        <th rowspan="2" align="center" bgcolor="#CCCCCC"><img src="../../images/pencil.png" width="20" height="20" /></th>
-                                        <th colspan="20" align="center" bgcolor="#CCCCCC">量表各因子成績(平均題分)</th>
-                                    </tr>
-                                    <tr>
-                                        <th align="center" bgcolor="#f8e7c7">效度</th>
-                                        <th align="center" bgcolor="#f8e7c7">AL</th>
-                                        <th align="center" bgcolor="#f8e7c7">D1</th>
-                                        <th align="center" bgcolor="#f8e7c7">D2</th>
-                                        <th align="center" bgcolor="#f8e7c7">F1</th>
-                                        <th align="center" bgcolor="#f8e7c7">F2</th>
-                                        <th align="center" bgcolor="#f8e7c7">F3</th>
-                                        <th align="center" bgcolor="#f8e7c7">F4</th>
-                                        <th align="center" bgcolor="#f8e7c7">S01</th>
-                                        <th align="center" bgcolor="#f8e7c7">S02</th>
-                                        <th align="center" bgcolor="#f8e7c7">S03</th>
-                                        <th align="center" bgcolor="#f8e7c7">S04</th>
-                                        <th align="center" bgcolor="#f8e7c7">S05</th>
-                                        <th align="center" bgcolor="#f8e7c7">S06</th>
-                                        <th align="center" bgcolor="#f8e7c7">S07</th>
-                                        <th align="center" bgcolor="#f8e7c7">S08</th>
-                                        <th align="center" bgcolor="#f8e7c7">S09</th>
-                                        <th align="center" bgcolor="#f8e7c7">S10</th>
-                                        <th align="center" bgcolor="#f8e7c7">S11</th>
-                                        <th align="center" bgcolor="#f8e7c7">S12</th>
-                                    </tr>
-                                </thead>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="1,1" />
-                                                    
-
-                                                </td>
-                                                <td>2019-08-12</td>
-                                                <td>
-                                                    
-
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=1&amp;sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D">B10800001</a>
-                                                </td>
-                                                <td>大眾傳播研究所</td>
-                                                <td>
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=1&amp;sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D">林小明</a>
-                                                </td>
-                                                <td>女</td>
-                                                <td>1</td>
-                                                <td></td>
-                                                    <td>同意</td>
-                                                <td>已施測	</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D">刪除</a>                                                </td>
-                                                <td>93</td>
-                                                <td>0.1</td>
-                                                <td>0.1</td>
-                                                <td>0</td>
-                                                <td>0.3</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0.8</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0.2</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="2,5" />
-                                                    
-
-                                                </td>
-                                                <td>2019-08-15</td>
-                                                <td>
-                                                    
-
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=2&amp;sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D">text11</a>
-                                                </td>
-                                                <td>人類發展與家庭學系</td>
-                                                <td>
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=2&amp;sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D">陳小明</a>
-                                                </td>
-                                                <td>男</td>
-                                                <td>1</td>
-                                                <td>test</td>
-                                                    <td>同意</td>
-                                                <td>已施測	</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D">刪除</a>                                                </td>
-                                                <td>73</td>
-                                                <td>1.7</td>
-                                                <td>1.8</td>
-                                                <td>1.5</td>
-                                                <td>3.3</td>
-                                                <td>0.1</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>2.6</td>
-                                                <td>4.5</td>
-                                                <td>3</td>
-                                                <td>0.4</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>3</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>1.5</td>
-                                                <td>3.1</td>
-                                                <td>0.7</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value=",7" />
-                                                    
-
-                                                </td>
-                                                <td>2019-08-15</td>
-                                                <td>
-                                                    
-
-                                                    
-N108018008                                                </td>
-                                                <td>化學系</td>
-                                                <td>
-                                                    
-王小明                                                </td>
-                                                <td>男</td>
-                                                <td>1</td>
-                                                <td>A</td>
-                                                    <td>同意</td>
-                                                <td>未完成</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=b9bEm5l5dlA6PdIS%2B6tnGg%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=b9bEm5l5dlA6PdIS%2B6tnGg%3D%3D">刪除</a>                                                </td>
-                                                <td></td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="3,8" />
-                                                    
-
-                                                </td>
-                                                <td>2019-08-15</td>
-                                                <td>
-                                                    
-
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=3&amp;sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D">Test1111</a>
-                                                </td>
-                                                <td>人類發展與家庭學系</td>
-                                                <td>
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=3&amp;sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D">小明</a>
-                                                </td>
-                                                <td>女</td>
-                                                <td>1</td>
-                                                <td>Test</td>
-                                                    <td>同意</td>
-                                                <td>已施測	</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D">刪除</a>                                                </td>
-                                                <td>100</td>
-                                                <td>0.7</td>
-                                                <td>1</td>
-                                                <td>0.3</td>
-                                                <td>1.9</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0.7</td>
-                                                <td>5</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>2.5</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value=",21" />
-                                                    
-
-                                                </td>
-                                                <td>2019-08-22</td>
-                                                <td>
-                                                    
-
-                                                    
-1234567890                                                </td>
-                                                <td>化學系</td>
-                                                <td>
-                                                    
-王小明                                                </td>
-                                                <td>男</td>
-                                                <td>1</td>
-                                                <td>A</td>
-                                                    <td>同意</td>
-                                                <td>未完成</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=WUyAjAeJKoA1q1KKVhqJNQ%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=WUyAjAeJKoA1q1KKVhqJNQ%3D%3D">刪除</a>                                                </td>
-                                                <td></td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="5829,6174" />
-                                                    
-
-                                                </td>
-                                                <td>2019-09-06</td>
-                                                <td>
-                                                    
-
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=5829&amp;sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D">B10801234</a>
-                                                </td>
-                                                <td>企業管理學系</td>
-                                                <td>
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=5829&amp;sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D">王大雄</a>
-                                                </td>
-                                                <td>男</td>
-                                                <td>1</td>
-                                                <td>A</td>
-                                                    <td>同意</td>
-                                                <td>已施測	</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D">刪除</a>                                                </td>
-                                                <td>61</td>
-                                                <td>0.1</td>
-                                                <td>0.1</td>
-                                                <td>0.2</td>
-                                                <td>0.2</td>
-                                                <td>0</td>
-                                                <td>0.3</td>
-                                                <td>0.1</td>
-                                                <td>0.2</td>
-                                                <td>0</td>
-                                                <td>0.5</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0.7</td>
-                                                <td>0.2</td>
-                                                <td>0</td>
-                                                <td>0.2</td>
-                                                <td>0.1</td>
-                                                <td>0</td>
-                                        </tbody>
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value="11650,12225" />
-                                                    
-
-                                                </td>
-                                                <td>2019-10-01</td>
-                                                <td>
-                                                    
-
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=11650&amp;sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D">test</a>
-                                                </td>
-                                                <td>人類發展與家庭學系</td>
-                                                <td>
-                                                    
-                                                        <a href="/Manager/ScoreResult?tid=11650&amp;sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D">test</a>
-                                                </td>
-                                                <td>女</td>
-                                                <td>其他</td>
-                                                <td>123</td>
-                                                    <td>同意</td>
-                                                <td>已施測	</td>
-                                                <td>
-<a href="/Manager/EditStudentDataPage?sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D">編輯</a>|
-<a href="/Manager/StdRemovePage?sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D">刪除</a>                                                </td>
-                                                <td>68</td>
-                                                <td>1.5</td>
-                                                <td>2.2</td>
-                                                <td>0.9</td>
-                                                <td>2.2</td>
-                                                <td>2.1</td>
-                                                <td>0.5</td>
-                                                <td>1.3</td>
-                                                <td>2.6</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2.6</td>
-                                                <td>0.7</td>
-                                                <td>0.7</td>
-                                                <td>0</td>
-                                                <td>1.7</td>
-                                                <td>2</td>
-                                                <td>0</td>
-                                        </tbody>
-
-                                                
-                                        <tbody class="listnum">
-                                            <tr>
-                                                <td>
-                                                    
-                                                    
-                                                    <input type="checkbox" id="checkboxs" name="checkbox3" value=",21403" />
-                                                    
-
-                                                </td>
-                                                <td>2020-04-17</td>
-                                                <td>
-                                                    
-
-                                                    
-0417test                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    
-0417test                                                </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                    <td>不同意</td>
-                                                <td>未完成</td>
-                                                <td>
-                                                        <p>無資料</p>
-                                                </td>
-                                                <td></td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                        </tbody>
-                            </table>
-                        </div>
-                    </div>
-</form>            </div>
-            <!-- end row -->
+          <div class="row">
+            <session class="tool">
+              <h2>Hello,系統總管理者</h2>
+              <div class="admin-tool">
+                <ul>
+                  <li><a href="/Manager/Logout">登出</a></li>
+                  <li><a href="/Manager/AccountMag">管理帳號設定</a></li>
+                  <li><a href="/Manager/ScoreList">所有學生量表結果</a></li>
+                  <li><a href="/Manager/ScaleInfo">量表因素說明</a></li>
+                </ul>
+              </div>
+            </session>
+          </div>
+          <!-- end row -->
         </div>
         <!-- end container -->
-        <!-- <button class="readmore-btn">
+
+        <div>
+          <session class="scorelist">
+            <div class="container">
+              <div class="row">
+                <h1>學生量表填答結果列表</h1>
+                <div id="mode-select"></div>
+                <form
+                  action="/Manager/ScoreList"
+                  data-ajax="true"
+                  id="form0"
+                  method="post"
+                >
+                  <div class="filter-conditions">
+                    <h3>篩選條件</h3>
+                    <div class="filter-item">
+                      施測學年
+                      <select
+                        class="form-control form-group filterbar"
+                        id="SchoolYear"
+                        name="SchoolYear"
+                        onchange="form.submit();"
+                        ><option value="">(請選擇學年)</option>
+                        <option value="1">107學年</option>
+                        <option selected="selected" value="2">108學年</option>
+                        <option value="3">109學年</option>
+                        <option value="4">110學年</option>
+                        <option value="5">111學年</option>
+                        <option value="6">112學年</option>
+                        <option value="7">113學年</option>
+                        <option value="8">114學年</option>
+                        <option value="9">115學年</option>
+                      </select>
+                    </div>
+                    <div class="filter-item">
+                      地區
+                      <select
+                        class="form-control form-group filterbar"
+                        id="Zone"
+                        name="Zone"
+                        onchange="form.submit();"
+                        ><option value="">(請選擇學校所屬地區)</option>
+                        <option>嘉義市</option>
+                        <option>桃園市</option>
+                        <option selected="selected">臺北市</option>
+                        <option>新北市</option>
+                        <option>嘉義縣</option>
+                        <option>新竹縣</option>
+                        <option>新竹市</option>
+                        <option>花蓮縣</option>
+                        <option>臺南市</option>
+                        <option>高雄市</option>
+                        <option>基隆市</option>
+                        <option>南投縣</option>
+                        <option>宜蘭縣</option>
+                        <option>苗栗縣</option>
+                        <option>雲林縣</option>
+                        <option>臺中市</option>
+                        <option>屏東縣</option>
+                        <option>彰化縣</option>
+                        <option>臺東縣</option>
+                      </select>
+                    </div>
+                    <div class="filter-item">
+                      學校
+                      <select
+                        class="form-control form-group filterbar"
+                        id="SchoolName"
+                        name="SchoolName"
+                        onchange="form.submit();"
+                        ><option value="">(請選擇學校)</option>
+                        <option>中國文化大學</option>
+                        <option>中國科技大學</option>
+                        <option>東吳大學</option>
+                        <option>國立臺北商業大學</option>
+                        <option>國立臺北教育大學</option>
+                        <option>國立臺北藝術大學</option>
+                        <option>國立臺北護理健康大學</option>
+                        <option selected="selected">國立臺灣師範大學</option>
+                        <option>臺北城市科技大學</option>
+                        <option>臺北醫學大學</option>
+                        <option>臺灣神學院研究學院</option>
+                        <option>銘傳大學</option>
+                      </select>
+                      系所
+                      <select
+                        class="form-control form-group filterbar"
+                        id="College"
+                        name="College"
+                        onchange="form.submit();"
+                        ><option value="">(請選擇系所)</option>
+                        <option>人類發展與家庭學系</option>
+                        <option>大眾傳播研究所</option>
+                        <option>工業教育學系</option>
+                        <option>公民教育與活動領導學系</option>
+                        <option>化學系</option>
+                        <option>民族音樂研究所</option>
+                        <option>生命科學系</option>
+                        <option>生物多樣性國際研究生博士學位學程</option>
+                        <option>企業管理學系</option>
+                        <option>光電科技研究所</option>
+                        <option>全球經營與策略研究所</option>
+                        <option>地球科學系</option>
+                        <option>地理學系</option>
+                        <option>東亞學系－政治與經濟組</option>
+                        <option>物理學系</option>
+                        <option>社會工作學研究所</option>
+                        <option>社會教育學系</option>
+                        <option>表演藝術研究所</option>
+                        <option>政治學研究所</option>
+                        <option>流行音樂產業碩士專班</option>
+                        <option>科技應用與人力資源發展學系</option>
+                        <option>科學教育研究所</option>
+                        <option>美術學系</option>
+                        <option>英語學系－文學組</option>
+                        <option>音樂學系</option>
+                        <option>海洋環境科技研究所</option>
+                        <option>特殊教育學系</option>
+                        <option>健康促進與衛生教育學系</option>
+                        <option>國文學系</option>
+                        <option>國際人力資源發展研究所</option>
+                        <option>國際企業管理雙碩士學位學程</option>
+                        <option>教育心理與輔導學系</option>
+                        <option>教育政策與行政研究所</option>
+                        <option>教育學系</option>
+                        <option>教育學院創造力發展碩士在職專班</option>
+                        <option>設計學系</option>
+                        <option>復健諮商研究所</option>
+                        <option>華語文教學系</option>
+                        <option>資訊工程學系</option>
+                        <option>資訊教育研究所</option>
+                        <option>運動休閒與餐旅管理研究所</option>
+                        <option>運動競技學系－運動科學碩士班</option>
+                        <option>電機工程學系</option>
+                        <option>圖文傳播學系</option>
+                        <option>圖書資訊學研究所</option>
+                        <option>管理研究所</option>
+                        <option>管理學院高階經理人企業管理碩士在職專班</option>
+                        <option>管理學院國際時尚高階管理碩士在職專班</option>
+                        <option>臺灣史研究所</option>
+                        <option>臺灣語文學系</option>
+                        <option>數學系</option>
+                        <option>歐洲文化與觀光研究所</option>
+                        <option>課程與教學研究所</option>
+                        <option>機電工程學系</option>
+                        <option>歷史學系</option>
+                        <option>應用華語文學系</option>
+                        <option>環境教育研究所</option>
+                        <option>翻譯研究所</option>
+                        <option>藝術史研究所</option>
+                        <option>體育學系</option>
+                      </select>
+                    </div>
+
+                    <div class="filter-item">
+                      年級
+                      <select
+                        class="form-control form-group filterbar"
+                        id="Grade"
+                        name="Grade"
+                        onchange="form.submit();"
+                        ><option value=""></option>
+                        <option value="1">一</option>
+                        <option value="2">二</option>
+                        <option value="3">三</option>
+                        <option value="4">四</option>
+                        <option value="5">五</option>
+                        <option value="6">六</option>
+                        <option value="7">七</option>
+                        <option value="8">其他</option>
+                      </select>
+                      班級
+                      <input
+                        class="form-control form-group filterbar"
+                        name="classname"
+                        type="text"
+                      />
+                    </div>
+                    <div class="filter-item">
+                      特殊狀況
+                      <select
+                        class="form-control form-group filterbar"
+                        id="SpeConditions"
+                        name="SpeConditions"
+                        onchange="form.submit();"
+                        ><option value=""></option>
+                        <option value="1">高關懷</option>
+                        <option value="2">高自殺意圖</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr />
+                  <div id="file-print">
+                    <input
+                      class="file-print-btn"
+                      type="submit"
+                      value="匯出名單"
+                      name="button"
+                    />
+                    <input
+                      class="file-print-btn"
+                      type="submit"
+                      value="列印結果"
+                      name="button"
+                    />
+                    <input
+                      class="file-print-btn"
+                      type="submit"
+                      value="重新填答"
+                      name="button"
+                      onclick="return reTest()"
+                    />
+                  </div>
+                  <div>
+                    <!-- <div class="listnum">總共 200 筆</div> -->
+                    <div class="scorelist-table">
+                      <table
+                        width="2000"
+                        align="center"
+                        border="0"
+                        cellspacing="4"
+                        cellpadding="4"
+                      >
+                        <thead>
+                          <tr>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              <div>
+                                <form
+                                  id="form1"
+                                  name="form1"
+                                  method="post"
+                                  action=""
+                                >
+                                  <input
+                                    name="checkboxAll"
+                                    id="CheckboxAll"
+                                    type="checkbox"
+                                  />
+                                  <label for="checkbox"></label>
+                                </form>
+                              </div>
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              填答時間
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              學號
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              系所
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              姓名
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              性別
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              年級
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              班級
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              同意書
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              施測狀態
+                            </th>
+                            <th rowspan="2" align="center" bgcolor="#CCCCCC">
+                              <img
+                                src="../../images/pencil.png"
+                                width="20"
+                                height="20"
+                              />
+                            </th>
+                            <th colspan="20" align="center" bgcolor="#CCCCCC">
+                              量表各因子成績(平均題分)
+                            </th>
+                          </tr>
+                          <tr>
+                            <th align="center" bgcolor="#f8e7c7">效度</th>
+                            <th align="center" bgcolor="#f8e7c7">AL</th>
+                            <th align="center" bgcolor="#f8e7c7">D1</th>
+                            <th align="center" bgcolor="#f8e7c7">D2</th>
+                            <th align="center" bgcolor="#f8e7c7">F1</th>
+                            <th align="center" bgcolor="#f8e7c7">F2</th>
+                            <th align="center" bgcolor="#f8e7c7">F3</th>
+                            <th align="center" bgcolor="#f8e7c7">F4</th>
+                            <th align="center" bgcolor="#f8e7c7">S01</th>
+                            <th align="center" bgcolor="#f8e7c7">S02</th>
+                            <th align="center" bgcolor="#f8e7c7">S03</th>
+                            <th align="center" bgcolor="#f8e7c7">S04</th>
+                            <th align="center" bgcolor="#f8e7c7">S05</th>
+                            <th align="center" bgcolor="#f8e7c7">S06</th>
+                            <th align="center" bgcolor="#f8e7c7">S07</th>
+                            <th align="center" bgcolor="#f8e7c7">S08</th>
+                            <th align="center" bgcolor="#f8e7c7">S09</th>
+                            <th align="center" bgcolor="#f8e7c7">S10</th>
+                            <th align="center" bgcolor="#f8e7c7">S11</th>
+                            <th align="center" bgcolor="#f8e7c7">S12</th>
+                          </tr>
+                        </thead>
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value="1,1"
+                              />
+                            </td>
+                            <td>2019-08-12</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=1&amp;sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D"
+                                >B10800001</a
+                              >
+                            </td>
+                            <td>大眾傳播研究所</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=1&amp;sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D"
+                                >林小明</a
+                              >
+                            </td>
+                            <td>女</td>
+                            <td>1</td>
+                            <td></td>
+                            <td>同意</td>
+                            <td>已施測</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=SLT94zgRfNjK%2FthL51K1fg%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td>93</td>
+                            <td>0.1</td>
+                            <td>0.1</td>
+                            <td>0</td>
+                            <td>0.3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.8</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.2</td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value="2,5"
+                              />
+                            </td>
+                            <td>2019-08-15</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=2&amp;sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D"
+                                >text11</a
+                              >
+                            </td>
+                            <td>人類發展與家庭學系</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=2&amp;sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D"
+                                >陳小明</a
+                              >
+                            </td>
+                            <td>男</td>
+                            <td>1</td>
+                            <td>test</td>
+                            <td>同意</td>
+                            <td>已施測</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=0wQ%2FZBSjXpARE1YvChiUCg%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td>73</td>
+                            <td>1.7</td>
+                            <td>1.8</td>
+                            <td>1.5</td>
+                            <td>3.3</td>
+                            <td>0.1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>2.6</td>
+                            <td>4.5</td>
+                            <td>3</td>
+                            <td>0.4</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1.5</td>
+                            <td>3.1</td>
+                            <td>0.7</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value=",7"
+                              />
+                            </td>
+                            <td>2019-08-15</td>
+                            <td>
+                              N108018008
+                            </td>
+                            <td>化學系</td>
+                            <td>
+                              王小明
+                            </td>
+                            <td>男</td>
+                            <td>1</td>
+                            <td>A</td>
+                            <td>同意</td>
+                            <td>未完成</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=b9bEm5l5dlA6PdIS%2B6tnGg%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=b9bEm5l5dlA6PdIS%2B6tnGg%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value="3,8"
+                              />
+                            </td>
+                            <td>2019-08-15</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=3&amp;sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D"
+                                >Test1111</a
+                              >
+                            </td>
+                            <td>人類發展與家庭學系</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=3&amp;sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D"
+                                >小明</a
+                              >
+                            </td>
+                            <td>女</td>
+                            <td>1</td>
+                            <td>Test</td>
+                            <td>同意</td>
+                            <td>已施測</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=5WYKQ2QuciZ7dP3bFyqxLQ%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td>100</td>
+                            <td>0.7</td>
+                            <td>1</td>
+                            <td>0.3</td>
+                            <td>1.9</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.7</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>2.5</td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value=",21"
+                              />
+                            </td>
+                            <td>2019-08-22</td>
+                            <td>
+                              1234567890
+                            </td>
+                            <td>化學系</td>
+                            <td>
+                              王小明
+                            </td>
+                            <td>男</td>
+                            <td>1</td>
+                            <td>A</td>
+                            <td>同意</td>
+                            <td>未完成</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=WUyAjAeJKoA1q1KKVhqJNQ%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=WUyAjAeJKoA1q1KKVhqJNQ%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value="5829,6174"
+                              />
+                            </td>
+                            <td>2019-09-06</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=5829&amp;sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D"
+                                >B10801234</a
+                              >
+                            </td>
+                            <td>企業管理學系</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=5829&amp;sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D"
+                                >王大雄</a
+                              >
+                            </td>
+                            <td>男</td>
+                            <td>1</td>
+                            <td>A</td>
+                            <td>同意</td>
+                            <td>已施測</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=ifyTtgjl5QH07uC4a0xhaQ%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td>61</td>
+                            <td>0.1</td>
+                            <td>0.1</td>
+                            <td>0.2</td>
+                            <td>0.2</td>
+                            <td>0</td>
+                            <td>0.3</td>
+                            <td>0.1</td>
+                            <td>0.2</td>
+                            <td>0</td>
+                            <td>0.5</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0.7</td>
+                            <td>0.2</td>
+                            <td>0</td>
+                            <td>0.2</td>
+                            <td>0.1</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value="11650,12225"
+                              />
+                            </td>
+                            <td>2019-10-01</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=11650&amp;sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D"
+                                >test</a
+                              >
+                            </td>
+                            <td>人類發展與家庭學系</td>
+                            <td>
+                              <a
+                                href="/Manager/ScoreResult?tid=11650&amp;sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D"
+                                >test</a
+                              >
+                            </td>
+                            <td>女</td>
+                            <td>其他</td>
+                            <td>123</td>
+                            <td>同意</td>
+                            <td>已施測</td>
+                            <td>
+                              <a
+                                href="/Manager/EditStudentDataPage?sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D"
+                                >編輯</a
+                              >|
+                              <a
+                                href="/Manager/StdRemovePage?sid=0004&amp;uid=dZV4BknY0vAqPgudphW9PQ%3D%3D"
+                                >刪除</a
+                              >
+                            </td>
+                            <td>68</td>
+                            <td>1.5</td>
+                            <td>2.2</td>
+                            <td>0.9</td>
+                            <td>2.2</td>
+                            <td>2.1</td>
+                            <td>0.5</td>
+                            <td>1.3</td>
+                            <td>2.6</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2.6</td>
+                            <td>0.7</td>
+                            <td>0.7</td>
+                            <td>0</td>
+                            <td>1.7</td>
+                            <td>2</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+
+                        <tbody class="listnum">
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                id="checkboxs"
+                                name="checkbox3"
+                                value=",21403"
+                              />
+                            </td>
+                            <td>2020-04-17</td>
+                            <td>
+                              0417test
+                            </td>
+                            <td></td>
+                            <td>
+                              0417test
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>不同意</td>
+                            <td>未完成</td>
+                            <td>
+                              <p>無資料</p>
+                            </td>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- end container -->
+            <!-- <button class="readmore-btn">
             <a href="#">載入更多</a>
         </button> -->
-        <!--分頁按鈕-->
-        
-    </session>
-</div>
-<script type="text/javascript">
-    $(function() {
-        $('#CheckboxAll').click(function() {
-            //$("input[name='checkbox'").prop("checked", $(this).prop("checked"));
-            //$("input[name='checkbox2'").prop("checked", $(this).prop("checked"));
-            $("input[name='checkbox3").prop("checked", $(this).prop("checked"));
-            // $("input[name='checkbox4").prop("checked", $(this).prop("checked"));
-        });
-
-        //$('input[name=checkbox3]').on('click', function() {
-        //    var url = $(this).attr('data-url');
-        //    var status = $(this).is(':checked');
-        //    console.log($(this));
-        //    $('input[name=checkbox4]').on(function() {
-        //        var self = $(this);
-        //        console.log(self);
-        //        if (self.attr('data-url') === url) {
-        //            if (status === true) {
-        //                self.prop('checked', true);
-        //            } else {
-        //                self.prop('checked', false);
-        //            }
-        //        }
-        //    });
-        //});
-    });
-
-    function reTest() {
-        var reTestMsg = "確定要設定\"重新施測\"嗎?";
-        if (confirm(reTestMsg) == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
-
-
-
-
-
+            <!--分頁按鈕-->
+          </session>
         </div>
-        <div id="footer">
-            <footer class="footer bg-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 text-center">
-                            <p class="copyright">2017 © 大專校院學生心理健康關懷量表   Email：aimhntnu@gmail.com</p>
-                        </div>
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </footer>
-            <a id="goTop" class="btn-gotop" href="#">
-                <img alt="" border="0" onmouseover="this.src = '../../images/up-arrow-2-w40.png'" src="../../images/up-arrow-2-w40.png" onmouseout="    this.src = '../../images/up-arrow-2-w40.png'"/>
-            </a>
-        </div>
+        <script type="text/javascript">
+          $(function () {
+            $("#CheckboxAll").click(function () {
+              //$("input[name='checkbox'").prop("checked", $(this).prop("checked"));
+              //$("input[name='checkbox2'").prop("checked", $(this).prop("checked"));
+              $("input[name='checkbox3").prop(
+                "checked",
+                $(this).prop("checked")
+              );
+              // $("input[name='checkbox4").prop("checked", $(this).prop("checked"));
+            });
+
+            //$('input[name=checkbox3]').on('click', function() {
+            //    var url = $(this).attr('data-url');
+            //    var status = $(this).is(':checked');
+            //    console.log($(this));
+            //    $('input[name=checkbox4]').on(function() {
+            //        var self = $(this);
+            //        console.log(self);
+            //        if (self.attr('data-url') === url) {
+            //            if (status === true) {
+            //                self.prop('checked', true);
+            //            } else {
+            //                self.prop('checked', false);
+            //            }
+            //        }
+            //    });
+            //});
+          });
+
+          function reTest() {
+            var reTestMsg = '確定要設定"重新施測"嗎?';
+            if (confirm(reTestMsg) == true) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        </script>
+      </div>
+      <div id="footer">
+        <footer class="footer bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <p class="copyright">
+                  2017 © 大專校院學生心理健康關懷量表 Email：aimhntnu@gmail.com
+                </p>
+              </div>
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- end container -->
+        </footer>
+        <a id="goTop" class="btn-gotop" href="#">
+          <img
+            alt=""
+            border="0"
+            onmouseover="this.src = '../../images/up-arrow-2-w40.png'"
+            src="../../images/up-arrow-2-w40.png"
+            onmouseout="    this.src = '../../images/up-arrow-2-w40.png'"
+          />
+        </a>
+      </div>
     </div>
-    
-    
-<!-- Visual Studio Browser Link -->
-<script type="application/json" id="__browserLink_initializationData">
-    {"appName":"Chrome","requestId":"805d5e5f5fc24b38bb1f796566cad37d"}
-</script>
-<script type="text/javascript" src="http://localhost:5225/abbe59487f8a473ba7b5403272698897/browserLink" async="async"></script>
-<!-- End Browser Link -->
 
-</body>
-
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+      { "appName": "Chrome", "requestId": "805d5e5f5fc24b38bb1f796566cad37d" }
+    </script>
+    <script
+      type="text/javascript"
+      src="http://localhost:5225/abbe59487f8a473ba7b5403272698897/browserLink"
+      async="async"
+    ></script>
+    <!-- End Browser Link -->
+  </body>
 </html>
