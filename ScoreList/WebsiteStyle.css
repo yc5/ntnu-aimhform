@@ -952,14 +952,14 @@ td {
 }
 
 
-}
+
 .col-2,
 .col-10 {
     padding-left: 5px;
     padding-right: 5px;
 }
 
-}
+
 .row {
     display: -ms-flexbox;
     display: flex;
@@ -1030,7 +1030,7 @@ td {
     background-color: steelblue;
 }
 
-}
+
 
 /* ===========
    Print
