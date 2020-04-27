@@ -1,14 +1,21 @@
 $(document).ready(function(e){
     $(".card-box").addClass("normal-box");
-    console.log("Gogo");
-    
-
+    $("form").parsley();
 });
 
-$("form").submit(function(){
+// pasrsley
 
-  alert("OMG");
-});
+// $("form").parsley().on('field:validated', function() {
+//   // var ok = $('.parsley-error').length === 0;
+//   // $('.bs-callout-info').toggleClass('hidden', !ok);
+//   // $('.bs-callout-warning').toggleClass('hidden', ok);
+//   console.log("Nice");
+  
+// })
+// .on('form:submit', function() {
+//   return false; // Don't submit form for this demo
+// });
+
 
 $(window).click(function () {
   //驗正年齡
@@ -96,16 +103,24 @@ $(window).click(function () {
   if (live[1].checked) {
     live1[0].required = true;
     live1[1].required = true;
+    live1[0].parentElement.style.display = "block";
+    live1[1].parentElement.style.display = "block";
   } else {
     live1[0].required = false;
     live1[1].required = false;
+    live1[0].parentElement.style.display = "none";
+    live1[1].parentElement.style.display = "none";
   }
   if (live[2].checked) {
     live2[0].required = true;
     live2[1].required = true;
+    live2[0].parentElement.style.display = "block";
+    live2[1].parentElement.style.display = "block";
   } else {
     live2[0].required = false;
     live2[1].required = false;
+    live2[0].parentElement.style.display = "none";
+    live2[1].parentElement.style.display = "none";
   }
   //text
   if (live[4].checked) {

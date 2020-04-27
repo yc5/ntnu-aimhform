@@ -62,13 +62,13 @@
         </ul>
         <div class="checkbox-danger">
             <div class="radio radio-primary ">
-                <input id="checkbox" name="usecheck" value="1" type="radio">
+                <input id="checkbox" name="usecheck" value="1" type="radio" required>
                 <label for="checkbox">我同意上述宣告</label>
             </div>
             <div class="radio radio-primary ">
 
                 
-                <input id="checkbox2" name="usecheck" value="0" type="radio">
+                <input id="checkbox2" name="usecheck" value="0" type="radio" required>
                 <label for="checkbox2" >我不同意上述宣告</label>
 
             </div>
@@ -83,15 +83,15 @@
         <label class="col-2 col-form-label">．性別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="gender" id="radio3" value="1" >
+                <input type="radio" name="gender" id="radio3" value="1" required >
                 <label class="col" for="radio3">男</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="gender" id="radio4" value="2" >
+                <input type="radio" name="gender" id="radio4" value="2" required >
                 <label class="col" for="radio4">女</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="gender" id="radio5" value="3">
+                <input type="radio" name="gender" id="radio5" value="3" required>
                 <label class="col" for="radio5">其他</label>
             </div>
         </div>
@@ -99,35 +99,35 @@
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．出生日期：</label>
         <div class="col-10">
-            <input id="birthday" class="form-control" type="date" name="date" >
+            <input id="birthday" class="form-control" type="date" name="date" required >
         </div>
     </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．學制：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="school" id="radio13" value="1" >
+                <input type="radio" name="school" id="radio13" value="1" required >
                 <label class="col" for="radio13">學士(含四技/二技)</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="school" id="radio14" value="2">
+                <input type="radio" name="school" id="radio14" value="2" required>
                 <label class="col" for="radio14">專科(含五專/二專)</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="school" id="radio15" value="3">
+                <input type="radio" name="school" id="radio15" value="3" required>
                 <label class="col" for="radio15">軍警校院</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="school" id="radio80" value="5">
+                <input type="radio" name="school" id="radio80" value="5" required>
                 <label class="col" for="radio80">碩班</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="school" id="radio81" value="6">
+                <input type="radio" name="school" id="radio81" value="6" required>
                 <label class="col" for="radio81">博班</label>
             </div>
 
             <div class="radio radio-primary">
-                <input type="radio" name="school" id="radio16" value="4">
+                <input type="radio" name="school" id="radio16" value="4" required>
                 <label class="col" for="radio16">其他</label>
                 <input type="text" class="form-control" name="schoth" id="schoth">
             </div>
@@ -137,7 +137,7 @@
         <label class="col-2 col-form-label">．系所名稱：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <select class="form-control form-group-Quest" id="College" name="College" ><option></option>
+                <select class="form-control form-group-Quest" id="College" name="College" required><option></option>
 <option>土木與水資源工程學系</option>
 <option>中國文學系</option>
 <option>公共政策研究所</option>
@@ -191,39 +191,39 @@
             </div>
         </div>
     </div>
-    <div class="form-group-Quest row xstar-validate-error">
+    <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．年級：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio6" value="1" >
+                <input type="radio" name="sclass" id="radio6" value="1" required >
                 <label class="col" for="radio6">一</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio7" value="2">
+                <input type="radio" name="sclass" id="radio7" value="2" required>
                 <label class="col" for="radio7">二</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio8" value="3">
+                <input type="radio" name="sclass" id="radio8" value="3" required>
                 <label class="col" for="radio8">三</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio9" value="4">
+                <input type="radio" name="sclass" id="radio9" value="4" required>
                 <label class="col" for="radio9">四</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio10" value="5">
+                <input type="radio" name="sclass" id="radio10" value="5" required>
                 <label class="col" for="radio10">五</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="sclass" id="radio11" value="6">
+                <input type="radio" name="sclass" id="radio11" value="6" required>
                 <label class="col" for="radio11">六</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="sclass" id="radio12" value="7">
+                <input type="radio" name="sclass" id="radio12" value="7" required>
                 <label class="col" for="radio12">七</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="sclass" id="radio83" value="8">
+                <input type="radio" name="sclass" id="radio83" value="8" required>
                 <label class="col" for="radio83">其他</label>
             </div>
         </div>
@@ -231,59 +231,59 @@
         <div class="form-group-Quest row">
             <label class="col-2 col-form-label">．班級名稱：</label>
             <div class="col-10">
-                <input class="form-control text-left" name="classname" id="classname" type="text" >
+                <input class="form-control text-left" name="classname" id="classname" type="text" required >
             </div>
         </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．入學方式：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio22" value="1" >
+                <input type="radio" name="OnSchool" id="radio22" value="1" required >
                 <label class="col" for="radio22">繁星推薦</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio30" value="2">
+                <input type="radio" name="OnSchool" id="radio30" value="2" required>
                 <label class="col" for="radio30">個人申請</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio23" value="3">
+                <input type="radio" name="OnSchool" id="radio23" value="3" required>
                 <label class="col" for="radio23">大學指定考科考試分發</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="OnSchool" id="radio24" value="4">
+                <input type="radio" name="OnSchool" id="radio24" value="4" required>
                 <label class="col" for="radio24">四技二專統一入學測驗分發</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio25" value="5">
+                <input type="radio" name="OnSchool" id="radio25" value="5" required>
                 <label class="col" for="radio25">身心障礙學生升學大專校院甄試</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="OnSchool" id="radio26" value="6">
+                <input type="radio" name="OnSchool" id="radio26" value="6" required>
                 <label class="col" for="radio26">技優入學</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio27" value="7">
+                <input type="radio" name="OnSchool" id="radio27" value="7" required>
                 <label class="col" for="radio27">特殊選才</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio28" value="8">
+                <input type="radio" name="OnSchool" id="radio28" value="8" required>
                 <label class="col" for="radio28">轉學</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="OnSchool" id="radio29" value="9">
+                <input type="radio" name="OnSchool" id="radio29" value="9" required>
                 <label class="col" for="radio29">其他</label>
                 <input type="text" class="form-control" name="onsoth" id="onsoth">
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio84" value="10">
+                <input type="radio" name="OnSchool" id="radio84" value="10" required>
                 <label class="col" for="radio84">特色招生</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio85" value="11">
+                <input type="radio" name="OnSchool" id="radio85" value="11" required>
                 <label class="col" for="radio85">優先免試</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="OnSchool" id="radio86" value="12">
+                <input type="radio" name="OnSchool" id="radio86" value="12" required>
                 <label class="col" for="radio86">免試入學</label>
             </div>
         </div>
@@ -292,43 +292,43 @@
         <label class="col-2 col-form-label">．身分別：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio31" value="1" >
+                <input type="radio" name="Identity" id="radio31" value="1" required >
                 <label class="col" for="radio31">一般生</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio32" value="2">
+                <input type="radio" name="Identity" id="radio32" value="2" required>
                 <label class="col" for="radio32">原住民</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio33" value="3">
+                <input type="radio" name="Identity" id="radio33" value="3" required>
                 <label class="col" for="radio33">
                     特教生，障別：
                     <input type="text" class="form-control" name="ideoth1" id="ideoth1">
                 </label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio34" value="4">
+                <input type="radio" name="Identity" id="radio34" value="4" required>
                 <label class="col" for="radio34">
                     僑生，僑居地：
                     <input type="text" class="form-control" name="ideoth2" id="ideoth2">
                 </label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio35" value="5">
+                <input type="radio" name="Identity" id="radio35" value="5" required>
                 <label class="col" for="radio35">
                     外籍生，國家：
                     <input type="text" class="form-control" name="ideoth3" id="ideoth3">
                 </label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="Identity" id="radio36" value="6">
+                <input type="radio" name="Identity" id="radio36" value="6" required>
                 <label class="col" for="radio36">
                     交換生，國家：
                     <input type="text" class="form-control" name="ideoth4" id ="ideoth4">
                 </label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="Identity" id="radio37" value="7">
+                <input type="radio" name="Identity" id="radio37" value="7" required>
                 <label class="col" for="radio37">
                     其他
                     <input type="text" class="form-control" name="ideoth5" id="ideoth5">
@@ -340,40 +340,40 @@
         <label class="col-2 col-form-label">．住宿狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio38" value="1" >
+                <input type="radio" name="live" id="radio38" value="1"  required>
                 <label class="col" for="radio38">住校(學校宿舍)</label>
             </div>
             <div class="radio radio-primary   form-check-inline">
-                <input type="radio" name="live" id="radio39" value="2" >
-                <label class="col" for="radio39">校外租賃(</label>
+                <input type="radio" name="live" id="radio39" value="2"  required>
+                <label class="col" for="radio39">校外租賃</label>
             </div>
-            <div class="radio radio-primary form-check-inline ">
-                <input type="radio" name="live1" id="radio44" value="1" >
-                <label class="col" for="radio44">有室友</label>
+            <div class="radio radio-primary form-check-inline " style="display: none;">
+                <input type="radio" name="live1" id="radio44" value="1">
+                <label class="col" for="radio44">(有室友</label>
             </div>
-            <div class="radio radio-primary  form-check-inline">
+            <div class="radio radio-primary  form-check-inline" style="display: none;">
                 <input type="radio" name="live1" id="radio45" value="2" >
                 <label class="col" for="radio45">獨居)</label>
             </div>
             <div clas="radio radio-primary  "></div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="live" id="radio40" value="3">
-                <label class="col" for="radio40">住父母、親友或自己家中(</label>
+                <input type="radio" name="live" id="radio40" value="3" required>
+                <label class="col" for="radio40">住父母、親友或自己家中</label>
             </div>
-            <div class="radio radio-primary form-check-inline ">
+            <div class="radio radio-primary form-check-inline " style="display: none;">
                 <input type="radio" name="live2" id="radio42" value="1" >
-                <label class="col" for="radio42">有家人同住</label>
+                <label class="col" for="radio42">(有家人同住</label>
             </div>
-            <div class="radio radio-primary form-check-inline ">
+            <div class="radio radio-primary form-check-inline " style="display: none;">
                 <input type="radio" name="live2" id="radio43" value="2">
                 <label class="col" for="radio43">獨居)</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio82" value="5" >
+                <input type="radio" name="live" id="radio82" value="5"  required>
                 <label class="col" for="radio82">尚未確定</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="live" id="radio41" value="4">
+                <input type="radio" name="live" id="radio41" value="4" required>
                 <label class="col" for="radio41">其他</label>
                 <input type="text" class="form-control" name="textlive" id="textlive">
             </div>
@@ -383,29 +383,29 @@
         <label class="col-2 col-form-label">．父母婚姻狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary  form-check-inline ">
-                <input type="radio" name="marriage" id="radio46" value="1" >
+                <input type="radio" name="marriage" id="radio46" value="1" required >
                 <label class="col" for="radio46">已婚同居</label>
             </div>
             <div class="radio radio-primary  form-check-inline ">
-                <input type="radio" name="marriage" id="radio47" value="2" >
+                <input type="radio" name="marriage" id="radio47" value="2" required >
                 <label class="col" for="radio47">已婚分居</label>
             </div>
             
             <div clas="radio radio-primary  "></div>
 
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="marriage" id="radio49" value="3">
+                <input type="radio" name="marriage" id="radio49" value="3" required>
                 <label class="col" for="radio49">離婚</label>
             </div>
 
             
 
             <div class="radio radio-primary ">
-                <input type="radio" name="marriage" id="radio50" value="4">
+                <input type="radio" name="marriage" id="radio50" value="4" required>
                 <label class="col" for="radio50">喪偶</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="marriage" id="radio51" value="5">
+                <input type="radio" name="marriage" id="radio51" value="5" required>
                 <label class="col" for="radio51">其他</label>
                 <input type="text" class="form-control" name="maroth" id="maroth">
             </div>
@@ -416,35 +416,35 @@
         <label class="col-2 col-form-label">．父親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio54" value="1" >
+                <input type="radio" name="edu" id="radio54" value="1" required >
                 <label class="col" for="radio54">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio55" value="2">
+                <input type="radio" name="edu" id="radio55" value="2" required>
                 <label class="col" for="radio55">國(初)中</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio56" value="3">
+                <input type="radio" name="edu" id="radio56" value="3" required>
                 <label class="col" for="radio56">高中職</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio57" value="4">
+                <input type="radio" name="edu" id="radio57" value="4" required>
                 <label class="col" for="radio57">專科</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio58" value="5">
+                <input type="radio" name="edu" id="radio58" value="5" required>
                 <label class="col" for="radio58">大學</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu" id="radio59" value="6">
+                <input type="radio" name="edu" id="radio59" value="6" required>
                 <label class="col" for="radio59">碩士</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="edu" id="radio60" value="7">
+                <input type="radio" name="edu" id="radio60" value="7" required>
                 <label class="col" for="radio60">博士</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="edu" id="radio61" value="8">
+                <input type="radio" name="edu" id="radio61" value="8" required>
                 <label class="col" for="radio61">不詳</label>
             </div>
         </div>
@@ -454,35 +454,35 @@
         <label class="col-2 col-form-label">．母親教育程度：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="edu2" id="radio62" value="1" >
+                <input type="radio" name="edu2" id="radio62" value="1" required >
                 <label class="col" for="radio62">國小及以下</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu2" id="radio63" value="2">
+                <input type="radio" name="edu2" id="radio63" value="2" required>
                 <label class="col" for="radio63">國(初)中</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="edu2" id="radio64" value="3">
+                <input type="radio" name="edu2" id="radio64" value="3" required>
                 <label class="col" for="radio64">高中職</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu2" id="radio65" value="4">
+                <input type="radio" name="edu2" id="radio65" value="4" required>
                 <label class="col" for="radio65">專科</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="edu2" id="radio66" value="5">
+                <input type="radio" name="edu2" id="radio66" value="5" required>
                 <label class="col" for="radio66">大學</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="edu2" id="radio67" value="6">
+                <input type="radio" name="edu2" id="radio67" value="6" required>
                 <label class="col" for="radio67">碩士</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="edu2" id="radio68" value="7">
+                <input type="radio" name="edu2" id="radio68" value="7" required>
                 <label class="col" for="radio68">博士</label>
             </div>
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="edu2" id="radio69" value="8">
+                <input type="radio" name="edu2" id="radio69" value="8" required>
                 <label class="col" for="radio69">不詳</label>
             </div>
         </div>
