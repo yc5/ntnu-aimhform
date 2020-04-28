@@ -665,8 +665,16 @@ td {
    ScaleList
  ===============*/
 
-.filter-conditions {
+.filter-conditions,.filter-conditions-advanced {
     display: inline-block;
+}
+
+.filter-conditions button{
+    background: ;
+}
+
+.filter-conditions-advanced.hidden{
+    display: none;
 }
 
 .scorelist-table,

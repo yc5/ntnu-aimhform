@@ -231,8 +231,31 @@
                         <option value="1">高關懷</option>
                         <option value="2">高自殺意圖</option>
                       </select>
+                      <button type="button" onclick="document.querySelector('.filter-conditions-advanced').classList.toggle('hidden')">進階篩選條件</button>
+                      <button type="submit">送出</button>
                     </div>
                   </div>
+                  <br>
+                  <div class="filter-conditions-advanced hidden">
+                    <h3>進階篩選條件</h3>
+                    <div class="filter-item">
+                      學號
+                      <input
+                        class="form-control form-group filterbar"
+                        name="stuid"
+                        type="text"
+                      />
+                    </div>
+                    <div class="filter-item">
+                      姓名
+                      <input
+                        class="form-control form-group filterbar"
+                        name="stuid"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+
                   <hr />
                   <div id="file-print">
                     <input
