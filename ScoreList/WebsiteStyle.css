@@ -669,8 +669,15 @@ td {
     display: inline-block;
 }
 
-.filter-conditions button{
-    background: ;
+[class^=filter-conditions] button{
+    background: rgba(194, 170, 177, 1);
+    color: white;
+    border: 0;
+    padding: 1em;
+}
+[class^=filter-conditions] button:hover{
+    background: rgba(194, 170, 177, 0.9);
+    cursor: pointer;
 }
 
 .filter-conditions-advanced.hidden{

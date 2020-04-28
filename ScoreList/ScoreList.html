@@ -213,12 +213,6 @@
                         <option value="7">七</option>
                         <option value="8">其他</option>
                       </select>
-                      班級
-                      <input
-                        class="form-control form-group filterbar"
-                        name="classname"
-                        type="text"
-                      />
                     </div>
                     <div class="filter-item">
                       特殊狀況
@@ -232,12 +226,20 @@
                         <option value="2">高自殺意圖</option>
                       </select>
                       <button type="button" onclick="document.querySelector('.filter-conditions-advanced').classList.toggle('hidden')">進階篩選條件</button>
-                      <button type="submit">送出</button>
                     </div>
                   </div>
                   <br>
                   <div class="filter-conditions-advanced hidden">
+                    <hr>
                     <h3>進階篩選條件</h3>
+                    <div class="filter-item">
+                      班級
+                      <input
+                        class="form-control form-group filterbar"
+                        name="classname"
+                        type="text"
+                      />
+                    </div>
                     <div class="filter-item">
                       學號
                       <input
@@ -253,6 +255,9 @@
                         name="stuid"
                         type="text"
                       />
+                    </div>
+                    <div class="filter-item">
+                      <button type="submit">送出</button>
                     </div>
                   </div>
 
