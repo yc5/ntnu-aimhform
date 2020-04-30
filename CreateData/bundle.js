@@ -89,46 +89,111 @@ $(window).click(function () {
 
   //住宿狀況
   var live = document.getElementsByName("live");
+
+  // 有室友/獨居
   var live1 = document.getElementsByName("live1");
+
+  // 有家人同住/獨居
   var live2 = document.getElementsByName("live2");
-  if (!live[1].checked) {
-    live1[0].checked = false;
-    live1[1].checked = false;
+  
+  
+  function modifyLiveRequired() {
+    if ((!live1[0].checked && !live1[1].checked)||(!live2[0].checked && !live2[1].checked)) {
+      document.querySelectorAll(".live-inside-error").forEach(function(e) {
+        e.classList.add("show");
+      })
+    }
+    
+    // live[1] : 校外
+    // live[2] : 父母
+    
+    // repeated?
+    if (!live[1].checked) {
+      live1[0].checked = false;
+      live1[1].checked = false;
+    }
+    if (!live[2].checked) {
+      live2[0].checked = false;
+      live2[1].checked = false;
+    }
+    //child
+    
+    
+    // $(".form-group-Quest-live input").forEach(function(e){
+      //   console.log(e);
+      
+      // });
+      //校外租賃
+      if (live[1].checked) {
+        live1[0].required = true;
+        live1[1].required = true;
+        if(live1[0].checked || live1[1].checked){
+          document.querySelectorAll(".live-inside-error").forEach(function(e) {
+            e.classList.remove("show");
+          })
+        }
+        // live1[0].setAttribute("data-parsley-class-handler",".form-group-Quest:nth-child(9)");
+      // live[0].removeAttribute("data-parsley-class-handler");
+      live1[0].parentElement.style.display = "block";
+      live1[1].parentElement.style.display = "block";
+      // if (live1[0].checked || live1[1].checked) {
+      //   console.log("Nice Choice");      
+      // } else {
+      //   live[1].parentNode.parentNode.parentNode.classList.toggle("parsley-error");
+      // }
+    } else {
+      live1[0].required = false;
+      live1[1].required = false;
+      // live1[0].removeAttribute("data-parsley-class-handler");
+      // live[0].setAttribute("data-parsley-class-handler",".form-group-Quest:nth-child(9)");
+      live1[0].parentElement.style.display = "none";
+      live1[1].parentElement.style.display = "none";
+    }
+    //父母家
+    if (live[2].checked) {
+      live2[0].required = true;
+      live2[1].required = true;
+      if(live2[0].checked || live2[1].checked){
+        document.querySelectorAll(".live-inside-error").forEach(function(e) {
+          e.classList.remove("show");
+        })
+      }
+      // live2[0].setAttribute("data-parsley-class-handler",".form-group-Quest:nth-child(9)");
+      // live[0].removeAttribute("data-parsley-class-handler");
+      live2[0].parentElement.style.display = "block";
+      live2[1].parentElement.style.display = "block";
+
+      // if (live2[0].checked || live2[1].checked) {
+      //   console.log("Nice Choice");      
+      // } else {
+      //   live[1].parentNode.parentNode.parentNode.classList.toggle("parsley-error");
+      // }
+    } else {
+      live2[0].required = false;
+      live2[1].required = false;
+      // live2[0].removeAttribute("data-parsley-class-handler");
+      // live[0].setAttribute("data-parsley-class-handler",".form-group-Quest:nth-child(9)");
+      live2[0].parentElement.style.display = "none";
+      live2[1].parentElement.style.display = "none";
+    }
+    //text
+    if (live[4].checked) {
+      $("#textlive").attr("required", "required");
+    } else {
+      $("#textlive").removeAttr("required");
+      $("#textlive").val(null);
+    }
   }
-  if (!live[2].checked) {
-    live2[0].checked = false;
-    live2[1].checked = false;
-  }
-  //child
-  if (live[1].checked) {
-    live1[0].required = true;
-    live1[1].required = true;
-    live1[0].parentElement.style.display = "block";
-    live1[1].parentElement.style.display = "block";
-  } else {
-    live1[0].required = false;
-    live1[1].required = false;
-    live1[0].parentElement.style.display = "none";
-    live1[1].parentElement.style.display = "none";
-  }
-  if (live[2].checked) {
-    live2[0].required = true;
-    live2[1].required = true;
-    live2[0].parentElement.style.display = "block";
-    live2[1].parentElement.style.display = "block";
-  } else {
-    live2[0].required = false;
-    live2[1].required = false;
-    live2[0].parentElement.style.display = "none";
-    live2[1].parentElement.style.display = "none";
-  }
-  //text
-  if (live[4].checked) {
-    $("#textlive").attr("required", "required");
-  } else {
-    $("#textlive").removeAttr("required");
-    $("#textlive").val(null);
-  }
+  document.querySelectorAll(".form-group-Quest-live input").forEach(function(e){
+    e.addEventListener("click", function(event) {
+      modifyLiveRequired();
+      $('form').parsley().validate("live");
+      // setTimeout(function(){},500);
+      
+      // alert("OK");
+    });
+    
+  });
 
   //父母婚姻狀況
   var marriage = document.getElementsByName("marriage");

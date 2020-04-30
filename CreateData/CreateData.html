@@ -237,9 +237,8 @@
         <div class="form-group-Quest row">
             <label class="col-2 col-form-label">．班級名稱：</label>
             <div class="col-10">
-                <input class="form-control text-left" name="classname" id="classname" type="text" required data-parsley-errors-container="#parssley-error-msg-classname">
+                <input class="form-control text-left" name="classname" id="classname" type="text">
             </div>
-            <div id="parssley-error-msg-classname"></div>
         </div>
     <div class="form-group-Quest row">
         <label class="col-2 col-form-label">．入學方式：</label>
@@ -345,46 +344,47 @@
         </div>
         <div id="parssley-error-msg-Identity"></div>
     </div>
-    <div class="form-group-Quest row">
+    <div class="form-group-Quest row form-group-Quest-live">
         <label class="col-2 col-form-label">．住宿狀況：</label>
         <div class="col-10 radio">
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio38" value="1"  required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
+                <input type="radio" name="live" id="radio38" value="1" required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio38">住校(學校宿舍)</label>
             </div>
             <div class="radio radio-primary   form-check-inline">
-                <input type="radio" name="live" id="radio39" value="2"  required>
+                <input type="radio" name="live" id="radio39" value="2" required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio39">校外租賃</label>
             </div>
-            <div class="radio radio-primary form-check-inline " style="display: none;">
+          
+            <div class="radio radio-primary form-check-inline live-inside-error" style="display: none;">
                 <span style="position: relative;top: 1.5em;left: -0.5em;">(</span>
-                <input type="radio" name="live1" id="radio44" value="1">
+                <input type="radio" name="live1" id="radio44" value="1" data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio44">有室友</label>
             </div>
-            <div class="radio radio-primary  form-check-inline" style="display: none;">
-                <input type="radio" name="live1" id="radio45" value="2" >
+            <div class="radio radio-primary  form-check-inline live-inside-error" style="display: none;">
+                <input type="radio" name="live1" id="radio45" value="2" data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio45">獨居)</label>
             </div>
-            <div clas="radio radio-primary  "></div>
+           
             <div class="radio radio-primary form-check-inline">
-                <input type="radio" name="live" id="radio40" value="3" required>
+                <input type="radio" name="live" id="radio40" value="3" required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio40">住父母、親友或自己家中</label>
             </div>
-            <div class="radio radio-primary form-check-inline " style="display: none;">
+            <div class="radio radio-primary form-check-inline live-inside-error" style="display: none;">
                 <span style="position: relative;top: 1.5em;left: -0.5em;">(</span>
-                <input type="radio" name="live2" id="radio42" value="1" >
+                <input type="radio" name="live2" id="radio42" value="1" data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio42">有家人同住</label>
             </div>
-            <div class="radio radio-primary form-check-inline " style="display: none;">
-                <input type="radio" name="live2" id="radio43" value="2">
+            <div class="radio radio-primary form-check-inline live-inside-error" style="display: none;">
+                <input type="radio" name="live2" id="radio43" value="2" data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio43">獨居)</label>
             </div>
             <div class="radio radio-primary">
-                <input type="radio" name="live" id="radio82" value="5"  required>
+                <input type="radio" name="live" id="radio82" value="5" required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio82">尚未確定</label>
             </div>
             <div class="radio radio-primary ">
-                <input type="radio" name="live" id="radio41" value="4" required>
+                <input type="radio" name="live" id="radio41" value="4" required data-parsley-errors-container="#parssley-error-msg-live" data-parsley-group="live" data-parsley-class-handler=".form-group-Quest:nth-child(9)">
                 <label class="col" for="radio41">其他</label>
                 <input type="text" class="form-control" name="textlive" id="textlive">
             </div>

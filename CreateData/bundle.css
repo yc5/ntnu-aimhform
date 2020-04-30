@@ -5,3 +5,7 @@
 .row.parsley-error{
     border: #00BCD4 solid 2px;
 }
+
+.live-inside-error.show{
+    border: red 1px solid;
+}
