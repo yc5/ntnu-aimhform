@@ -1,6 +1,8 @@
 $(document).ready(function(e){
     $(".card-box").addClass("normal-box");
     $("form").parsley();
+    $("#College").attr("data-parsley-errors-container", "#parssley-error-msg-College");
+    $("#College").attr("data-parsley-class-handler", ".form-group-Quest:nth-child(4)");
 });
 
 // pasrsley
