@@ -1,0 +1,697 @@
+﻿@using System.Web.UI.WebControls
+@model  AIMHtest.ViewModel.CreateDataViewModel
+
+<script type="text/javascript">
+    $(".card-box").addClass("normal-box");
+
+    $(window).click(function() {
+
+        //驗正年齡
+        var birth = new Date($("#birthday").val());
+
+        if (birth) {
+            var calyear = 1000 * 60 * 60 * 24 * 365;
+            var calnow = new Date();
+            var calbirthday = new Date(birth);
+            var age = parseInt((calnow - calbirthday) / calyear);
+            console.log(age);
+            if (age < 15) {
+                alert("生日資料不正確，請重新輸入!");
+                $("#birthday").val('');
+            }
+        }
+
+
+        //學制
+        var school = document.getElementsByName('school');
+        var schoth = document.getElementsByName('schoth');
+        if (school[5].checked) {
+            $("#schoth").attr("required", "required");
+            // console.log(schoth[0].required);
+            //console.log(schoth[0].value);
+        } else {
+            $("#schoth").removeAttr("required");
+            schoth[0].value = null;
+            //console.log(schoth[0].required);
+            //console.log(schoth[0].value);
+        }
+        //入學方式
+        var OnSchool = document.getElementsByName('OnSchool');
+        if (OnSchool[8].checked) {
+            $("#onsoth").attr("required", "required");
+        } else {
+            $("#onsoth").removeAttr("required");
+            $("#onsoth").val(null);
+        }
+        //身分別
+        var Identity = document.getElementsByName('Identity');
+        if (Identity[2].checked) {
+            $("#ideoth1").attr("required", "required");
+        } else {
+            $("#ideoth1").removeAttr("required");
+            $("#ideoth1").val(null);
+        }
+        if (Identity[3].checked) {
+            $("#ideoth2").attr("required", "required");
+        } else {
+            $("#ideoth2").removeAttr("required");
+            $("#ideoth2").val(null);
+        }
+        if (Identity[4].checked) {
+            $("#ideoth3").attr("required", "required");
+        } else {
+            $("#ideoth3").removeAttr("required");
+            $("#ideoth3").val(null);
+        }
+        if (Identity[5].checked) {
+            $("#ideoth4").attr("required", "required");
+        } else {
+            $("#ideoth4").removeAttr("required");
+            $("#ideoth4").val(null);
+        }
+        if (Identity[6].checked) {
+            $("#ideoth5").attr("required", "required");
+        } else {
+            $("#ideoth5").removeAttr("required");
+            $("#ideoth5").val(null);
+        }
+
+        //住宿狀況
+        var live = document.getElementsByName('live');
+        var live1 = document.getElementsByName('live1');
+        var live2 = document.getElementsByName('live2');
+        if (!live[1].checked) {
+            live1[0].checked = false;
+            live1[1].checked = false;
+        }
+        if (!live[2].checked) {
+            live2[0].checked = false;
+            live2[1].checked = false;
+        }
+        //child
+        if (live[1].checked) {
+            live1[0].required = true;
+            live1[1].required = true;
+
+        } else {
+            live1[0].required = false;
+            live1[1].required = false;
+        }
+        if (live[2].checked) {
+            live2[0].required = true;
+            live2[1].required = true;
+
+        } else {
+            live2[0].required = false;
+            live2[1].required = false;
+        }
+        //text
+        if (live[4].checked) {
+            $("#textlive").attr("required", "required");
+        } else {
+            $("#textlive").removeAttr("required");
+            $("#textlive").val(null);
+        }
+
+        //父母婚姻狀況
+        var marriage = document.getElementsByName('marriage');
+        //var marriage1 = document.getElementsByName('marriage1');
+        //var marriage2 = document.getElementsByName('marriage2');
+        //if (!marriage[0].checked) {
+        //    marriage1[0].checked = false;
+        //    marriage1[1].checked = false;
+        //}
+        //if (!marriage[1].checked) {
+        //    marriage2[0].checked = false;
+        //    marriage2[1].checked = false;
+        //}
+        ////child
+        //if (marriage[0].checked) {
+        //    marriage1[0].required = true;
+        //    marriage1[1].required = true;
+
+        //} else {
+        //    marriage1[0].required = false;
+        //    marriage1[1].required = false;
+        //}
+        //if (marriage[1].checked) {
+        //    marriage2[0].required = true;
+        //    marriage2[1].required = true;
+
+        //} else {
+        //    marriage2[0].required = false;
+        //    marriage2[1].required = false;
+        //}
+        //text
+        if (marriage[4].checked) {
+            $("#maroth").attr("required", "required");
+        } else {
+            $("#maroth").removeAttr("required");
+            $("#maroth").val(null);
+        }
+        //父親國籍
+        //var country = document.getElementsByName('country');
+        //if (country[1].checked)
+        //    {
+        //    $("#couoth").attr("required", "required");
+        //} else {
+        //    $("#couoth").removeAttr("required");
+        //    $("#couoth").val(null);
+        //}
+        //母親國籍
+        //var country1 = document.getElementsByName('country1');
+        //if (country1[1].checked) {
+        //    $("#couoth1").attr("required", "required");
+        //} else {
+        //    $("#couoth1").removeAttr("required");
+        //    $("#couoth1").val(null);
+        //}
+        //money
+        //var money = document.getElementsByName('money');
+        //if (money[5].checked) {
+        //    $("#moneyoth").attr("required", "required");
+        //} else {
+        //    $("#moneyoth").removeAttr("required");
+        //    $("#moneyoth").val(null);
+        //}
+
+        //判斷班級字元數
+        var classname = $("#classname").val();
+        if (classname.length > 10) {
+            alert("班級名稱限制10個字內!");
+            $("#classname").val('');
+        }
+    });
+</script>
+
+@using (Html.BeginForm("CreateDataEn", "AIMHcreate", FormMethod.Post))
+{
+    <div class="alert alert-success fade show m-b-0 col-sm-12">
+        <h5 class="text-success">Information about Personal Data Collection, Processing and Usage:</h5>
+        <ol>
+            <li>The data collected via this inventory are your personal information, which include your name, birth date, school major, family conditions, life conditions, and mental health status. Your school Guidance and Counseling Center will use this data only to understand your physical and mental health status, so as to provide you with necessary interventions, they will not use it for other purposes. The time period, territory, recipients, and methods of which the personal data are used: The data will be used only when you are enrolled in school in Taiwan via paper-based, electronic, internet or other proper, legal and reasonable channels by guidance teachers and counselors in school Guidance and Counseling Center. According to Personal Data Protection Act, the followings are your rights and interests: You can ask a copy to review, make a copy, supplement or correct, demand the cessation of the collection, processing or use of, or to erase your personal data collected by your school.</li>
+            <li>You can choose not to fill out this inventory, or demand to delete the data you previously provided. Your rights and interests will not be affected.</li>
+            @*<li>依照個資法規定，您的權利：您可就本校向您蒐集之個人資料，進行查詢或閱覽、製給複製本、要求補充或更正、要求停止蒐集、處理或利用您的個人資料，或是要求刪除您的個人資料。</li>
+            <li>您可以選擇不填寫量表，或要求刪除您已填答的資料，您的權益將不受影響。</li>*@
+        </ol>
+        <hr>
+        <h5 class="text-success">Computerized Test Consent of Attentive Inventory of Mental Health for Undergraduates:</h5>
+        <ul>
+            <li>This test will be delivered online and will take about 10-15 minutes. </li>
+            <li>This test can help you understand your mental health status, evaluate your college life adjustment conditions, and provide references for planning your college life. It can also help school Guidance and Counseling Center to understand your mental health conditions and to offer you proper care and resources based on your needs.</li>
+            <li> Only guidance teachers/counselors can review your test result when necessary. The reviewers will also follow confidentiality principles and their relevant professional ethical regulations. If homeroom teachers or other people apply for reviews, they need to ask for the student’s permission. </li>
+        </ul>
+        <div class=" row col-sm-12">
+            <div class="radio radio-primary ">
+                <input id="checkbox" name="usecheck" value="1" required="" type="radio">
+                <label for="checkbox" style="color: red">I hereby acknowledge that I have read the contents of this Agreement and give my consent.</label>
+            </div>
+            <div class="radio radio-primary ">
+
+                @*<input id="checkbox2" name="usecheck" value="0" onclick="location.href = '@Url.Action("UserCheckSave", "AIMHcreate", new
+                    {
+                        usecheck = 0
+                    })'" required="" type="radio">*@
+                <input id="checkbox2" name="usecheck" value="0" required="" type="radio">
+                <label for="checkbox2">I am not angry.</label>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h1>Demographic information</h1>
+        <p>※ Choose one that matches your condition most</p>
+    </div>
+    <hr>
+    <section>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Sex：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary ">
+                    <input type="radio" name="gender" id="radio3" value="1" required>
+                    <label class="col" for="radio3">Male</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="gender" id="radio4" value="2">
+                    <label class="col" for="radio4">Female</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="gender" id="radio5" value="3">
+                    <label class="col" for="radio5">Other</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Date of Birth：</label>
+            <div class="col-10">
+                <input id="birthday" class="form-control" type="date" name="date" required>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．School：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary ">
+                    <input type="radio" name="school" id="radio13" value="1" required>
+                    <label class="col" for="radio13">University</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="school" id="radio14" value="2">
+                    <label class="col" for="radio14">College/Technical School</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="school" id="radio15" value="3">
+                    <label class="col" for="radio15">Military/Police Academy</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="school" id="radio80" value="5">
+                    <label class="col" for="radio80">Master</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="school" id="radio81" value="6">
+                    <label class="col" for="radio81">Doctoral</label>
+                </div>
+
+                <div class="radio radio-primary">
+                    <input type="radio" name="school" id="radio16" value="4">
+                    <label class="col" for="radio16">Other</label>
+                    <input type="text" class="form-control" name="schoth" id="schoth">
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Department：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary">
+                    @Html.DropDownListFor(model => model.College, new SelectList(Model.College), new { @class = "form-control form-group-Quest", required = "required" })
+                    @*<select class="form-control form-group-Quest">
+                            <option>台北市</option>
+                            <option>新北市</option>
+                        </select>*@
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Year：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio6" value="1" required>
+                    <label class="col" for="radio6">1</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio7" value="2">
+                    <label class="col" for="radio7">2</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio8" value="3">
+                    <label class="col" for="radio8">3</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio9" value="4">
+                    <label class="col" for="radio9">4</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio10" value="5">
+                    <label class="col" for="radio10">5</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="sclass" id="radio11" value="6">
+                    <label class="col" for="radio11">6</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="sclass" id="radio12" value="7">
+                    <label class="col" for="radio12">7</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="sclass" id="radio83" value="8">
+                    <label class="col" for="radio83">Other</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Class name：</label>
+            <div class="col-10">
+                <input class="form-control text-left" name="classname" id="classname" type="text">
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Admission：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio22" value="1" required>
+                    <label class="col" for="radio22">Multi-Star Project</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio30" value="2">
+                    <label class="col" for="radio30">Individual Application</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio23" value="3">
+                    <label class="col" for="radio23">University Designated Exam and Distribution</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="OnSchool" id="radio24" value="4">
+                    <label class="col" for="radio24">Technical/Vocational School Unified Entrance Exam and Distribution</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio25" value="5">
+                    <label class="col" for="radio25">Students with Disabilities University Entrance Exam</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="OnSchool" id="radio26" value="6">
+                    <label class="col" for="radio26">Entrance Exam for Special Expertise</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio27" value="7">
+                    <label class="col" for="radio27">Entrance Selections for Special Populations</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio28" value="8">
+                    <label class="col" for="radio28">School Transfer</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="OnSchool" id="radio29" value="9">
+                    <label class="col" for="radio29">Other</label>
+                    <input type="text" class="form-control" name="onsoth" id="onsoth">
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio84" value="10">
+                    <label class="col" for="radio84">特色招生</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio85" value="11">
+                    <label class="col" for="radio85">優先免試</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="OnSchool" id="radio86" value="12">
+                    <label class="col" for="radio86">免試入學</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Status：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio31" value="1" required>
+                    <label class="col" for="radio31">General</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio32" value="2">
+                    <label class="col" for="radio32">Taiwan Indigenous</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio33" value="3">
+                    <label class="col" for="radio33">
+                        Special Education，Disability：
+                        <input type="text" class="form-control" name="ideoth1" id="ideoth1">
+                    </label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio34" value="4">
+                    <label class="col" for="radio34">
+                        Oversea Chinese，Oversea Residence：
+                        <input type="text" class="form-control" name="ideoth2" id="ideoth2">
+                    </label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio35" value="5">
+                    <label class="col" for="radio35">
+                        International，Country：
+                        <input type="text" class="form-control" name="ideoth3" id="ideoth3">
+                    </label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="Identity" id="radio36" value="6">
+                    <label class="col" for="radio36">
+                        Exchange Students，Country：
+                        <input type="text" class="form-control" name="ideoth4" id="ideoth4">
+                    </label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="Identity" id="radio37" value="7">
+                    <label class="col" for="radio37">
+                        Other
+                        <input type="text" class="form-control" name="ideoth5" id="ideoth5">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Resident Status：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary">
+                    <input type="radio" name="live" id="radio38" value="1" required>
+                    <label class="col" for="radio38">Living on campus（Dormitory）</label>
+                </div>
+                <div class="radio radio-primary   form-check-inline">
+                    <input type="radio" name="live" id="radio39" value="2">
+                    <label class="col" for="radio39">Rental off campus(</label>
+                </div>
+                <div class="radio radio-primary form-check-inline ">
+                    <input type="radio" name="live1" id="radio44" value="1">
+                    <label class="col" for="radio44">With roommate</label>
+                </div>
+                <div class="radio radio-primary  form-check-inline">
+                    <input type="radio" name="live1" id="radio45" value="2">
+                    <label class="col" for="radio45">Living alone)</label>
+                </div>
+                <div clas="radio radio-primary  ">@* 斷行用 *@</div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="live" id="radio40" value="3">
+                    <label class="col" for="radio40">Living with parents/relatives or your own house(</label>
+                </div>
+                <div class="radio radio-primary form-check-inline ">
+                    <input type="radio" name="live2" id="radio42" value="1">
+                    <label class="col" for="radio42">with family</label>
+                </div>
+                <div class="radio radio-primary form-check-inline ">
+                    <input type="radio" name="live2" id="radio43" value="2">
+                    <label class="col" for="radio43">Living alone)</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="live" id="radio82" value="5" required>
+                    <label class="col" for="radio82">尚未確定</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="live" id="radio41" value="4">
+                    <label class="col" for="radio41">Other</label>
+                    <input type="text" class="form-control" name="textlive" id="textlive">
+                </div>
+            </div>
+        </div>
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Parental Marriage Status：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary  form-check-inline ">
+                    <input type="radio" name="marriage" id="radio46" value="1" required>
+                    <label class="col" for="radio46">Married，Cohabitated </label>
+                </div>
+                <div class="radio radio-primary  form-check-inline ">
+                    <input type="radio" name="marriage" id="radio47" value="2">
+                    <label class="col" for="radio47">Married，Separated</label>
+                </div>
+                @*<div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="marriage1" id="radio47" value="1">
+                        <label class="col" for="radio47">同居</label>
+                    </div>
+                    <div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="marriage1" id="radio48" value="2">
+                        <label class="col" for="radio48">分居)</label>
+                    </div>*@
+                <div clas="radio radio-primary  ">@* 斷行用 *@</div>
+
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="marriage" id="radio49" value="3">
+                    <label class="col" for="radio49">Divorced </label>
+                </div>
+
+                @*<div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="marriage2" id="radio52" value="1">
+                        <label class="col" for="radio52">同居</label>
+                    </div>
+                    <div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="marriage2" id="radio53" value="2">
+                        <label class="col" for="radio53">分居)</label>
+                    </div>*@
+
+                <div class="radio radio-primary ">
+                    <input type="radio" name="marriage" id="radio50" value="4">
+                    <label class="col" for="radio50">Widowed</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="marriage" id="radio51" value="5">
+                    <label class="col" for="radio51">Other</label>
+                    <input type="text" class="form-control" name="maroth" id="maroth">
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group-Quest row">
+                <label class="col-2 col-form-label">．父親國籍：</label>
+                <div class="col-10 radio">
+                    <div class="radio radio-primary ">
+                        <input type="radio" name="country" id="radio78" value="1" required>
+                        <label class="col" for="radio78">台灣</label>
+                    </div>
+                    <div class="radio radio-primary ">
+                        <input type="radio" name="country" id="radio79" value="2">
+                        <label class="col" for="radio79">外國</label>
+                        <input type="text" class="form-control" name="couoth" id="couoth">
+                    </div>
+                </div>
+            </div>*@
+        <div class="form-group-Quest row">
+            <label class="col-2 col-form-label">．Father's Educational Level：：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio54" value="1" required>
+                    <label class="col" for="radio54">Elementary and under</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio55" value="2">
+                    <label class="col" for="radio55">Junior High School</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio56" value="3">
+                    <label class="col" for="radio56">Senior High or Technical School</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio57" value="4">
+                    <label class="col" for="radio57">College</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio58" value="5">
+                    <label class="col" for="radio58">University</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu" id="radio59" value="6">
+                    <label class="col" for="radio59">Master</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="edu" id="radio60" value="7">
+                    <label class="col" for="radio60">Doctoral</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="edu" id="radio61" value="8">
+                    <label class="col" for="radio61">Unknown</label>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group-Quest row">
+                <label class="col-2 col-form-label">．母親國籍：</label>
+                <div class="col-10 radio">
+                    <div class="radio radio-primary ">
+                        <input type="radio" name="country1" id="radio76" value="1" required>
+                        <label class="col" for="radio76">台灣</label>
+                    </div>
+                    <div class="radio radio-primary ">
+                        <input type="radio" name="country1" id="radio77" value="2">
+                        <label class="col" for="radio77">外國</label>
+                        <input type="text" class="form-control" name="couoth1" id="couoth1">
+                    </div>
+                </div>
+            </div>*@
+        <div class="form-group row">
+            <label class="col-2 col-form-label">．Mother's Educational Level：</label>
+            <div class="col-10 radio">
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="edu2" id="radio62" value="1" required>
+                    <label class="col" for="radio62">Elementary and under</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu2" id="radio63" value="2">
+                    <label class="col" for="radio63">Junior High School</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="edu2" id="radio64" value="3">
+                    <label class="col" for="radio64">Senior High or Technical School</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu2" id="radio65" value="4">
+                    <label class="col" for="radio65">College</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="edu2" id="radio66" value="5">
+                    <label class="col" for="radio66">University</label>
+                </div>
+                <div class="radio radio-primary">
+                    <input type="radio" name="edu2" id="radio67" value="6">
+                    <label class="col" for="radio67">Master</label>
+                </div>
+                <div class="radio radio-primary ">
+                    <input type="radio" name="edu2" id="radio68" value="7">
+                    <label class="col" for="radio68">Doctoral</label>
+                </div>
+                <div class="radio radio-primary form-check-inline">
+                    <input type="radio" name="edu2" id="radio69" value="8">
+                    <label class="col" for="radio69">Unknown</label>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group row">
+                <label class="col-3 col-form-label">．家庭總年收入(萬元)：</label>
+                <div class="col-9 radio">
+                    <div class="radio radio-primary">
+                        <input type="radio" name="money" id="radio70" value="1" required>
+                        <label class="col" for="radio70">50 萬以下</label>
+                    </div>
+                    <div class="radio radio-primary ">
+                        <input type="radio" name="money" id="radio71" value="2">
+                        <label class="col" for="radio71">51~100 萬</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="money" id="radio72" value="3">
+                        <label class="col" for="radio72">101~150 萬</label>
+                    </div>
+                    <div class="radio radio-primary">
+                        <input type="radio" name="money" id="radio73" value="4">
+                        <label class="col" for="radio73">151~200 萬</label>
+                    </div>
+                    <div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="money" id="radio75" value="5">
+                        <label class="col" for="radio75">201 萬以上</label>
+                    </div>
+                    <div class="radio radio-primary form-check-inline">
+                        <input type="radio" name="money" id="radio74" value="6">
+                        <label class="col" for="radio74">不詳</label>
+                    </div>
+                </div>
+            </div>*@
+        @*<div style="text-align: center">
+                <button type="submit" class="btn btn-primary waves-effect waves-light">確定送出</button>
+            </div>*@
+    </section>
+    <hr>
+
+    <div style="text-align: center">
+        <button type="submit" class="btn btn-primary waves-effect waves-light">Next</button>
+    </div>
+}
+
+<script type="text/javascript">
+    $("#checkbox2").click(
+      function () {
+          if (confirm("您選擇不同意，按下確定後將會立即返回首頁。"))
+              {
+          console.log('checkNO');
+          var data = { usecheck: $("#checkbox2").val() };
+                  $.ajax({
+                      url: '@Url.Action("CreateDataEn", "AIMHcreate")', //後端的URL
+                      type: "POST", //用POST的方式
+                      dataType: "json", //response的資料格式
+                      cache: false, //是否暫存
+                      async: false,
+                      data: data, //傳送給後端的資料
+                      success: function(response) {
+                          console.log(response); //成功後回傳的資料
+                      }
+                  });
+              location.href = '@Url.Action("Index", "AIMHtestIndex")';
+          } else {
+              var usecheck = document.getElementsByName('usecheck');
+              usecheck[0].checked = false;
+              usecheck[1].checked = false;
+              return false;
+          }
+      });
+</script>
+
