@@ -3,6 +3,16 @@ $(document).ready(function(e){
     $("form").parsley();
     $("#College").attr("data-parsley-errors-container", "#parssley-error-msg-College");
     $("#College").attr("data-parsley-class-handler", ".form-group-Quest:nth-child(4)");
+
+    document.querySelectorAll(".form-group-Quest-live input").forEach(function(e){
+      e.addEventListener("click", function(event) {
+        modifyLiveRequired();
+        $('form').parsley().validate("live");        
+        // setTimeout(function(){},500);
+        
+        // alert("OK");
+      });      
+    });
 });
 
 // pasrsley
@@ -89,21 +99,6 @@ $(window).click(function (e_window) {
     $("#ideoth5").val(null);
   }
 
-  //住宿狀況
-  // var live = document.getElementsByName("live");
-  // var live_useless = document.getElementsByName("useless");
-  var live_inschool = document.getElementById("radio38");
-  var live_notyet = document.getElementById("radio82");
-  var live_other = document.getElementById("radio41");
-
-  var live_outside = document.getElementById("radio39");
-  var live_outside_a = document.getElementById("radio44");
-  var live_outside_b = document.getElementById("radio45");
-  var live_family = document.getElementById("radio40");
-  var live_family_a = document.getElementById("radio42");
-  var live_family_b = document.getElementById("radio43");
-
-
   // 有室友/獨居
   // var live1 = document.getElementsByName("live1");
 
@@ -111,104 +106,6 @@ $(window).click(function (e_window) {
   // var live2 = document.getElementsByName("live2");
   
   
-  function modifyLiveRequired() {
-    if (live_outside_a.checked || live_outside_b.checked || live_family_a.checked || live_family_b.checked) {
-      document.querySelectorAll(".live-inside-error").forEach(function(e) {
-        e.classList.remove("show");
-      })
-    }else{
-      document.querySelectorAll(".live-inside-error").forEach(function(e) {
-        e.classList.add("show");
-      })
-    }
-
-    // if((live[0].checked || live[5].checked || live[6].checked)&&(live_useless[0].checked||live_useless[1].checked)){
-    // }
-
-    // inside out
-    // if((live_useless[0].checked&&!live[1].checked&&!live[2].checked)||(live_useless[1].checked&&!live[3].checked&&!live[4].checked)){
-    //   live_useless[0].checked = false;
-    //   live_useless[1].checked = false;
-
-    // }
-    
-    // too many target
-    // console.log(e_window.target);
-
-    
-    if(live_outside.checked || live_family.checked){
-      live_outside_a.required = true;
-      live_outside_b.required = true;
-      live_family_a.required = true;
-      live_family_b.required = true;
-    }else{
-      live_outside_a.required = false;
-      live_outside_b.required = false;
-      live_family_a.required = false;
-      live_family_b.required = false;
-    }
-      //校外租賃
-    if (live_outside.checked) {
-      live_outside_a.parentElement.style.display = "block";
-      live_outside_b.parentElement.style.display = "block";
-      live_family_a.checked = false;
-      live_family_b.checked = false;
-      // live_outside.name = "";
-      console.log("P1");
-      
-      // live[3].checked = false;
-      // live[4].checked = false;
-      
-      // live[0].checked = false;
-      // live[5].checked = false;
-      // live[6].checked = false;
-      
-      // if(live_useless[0].checked||live[5].checked||live[6].checked){
-        //   live_useless[0].checked = false;
-        //   live_useless[1].checked = false;
-        // }
-        
-      } else{
-        live_outside_a.parentElement.style.display = "none";
-        live_outside_b.parentElement.style.display = "none";
-      }
-      //父母家
-      if (live_family.checked) {
-        live_family_a.parentElement.style.display = "block";
-        live_family_b.parentElement.style.display = "block";
-        live_outside_a.checked = false;
-        live_outside_b.checked = false;
-        // live_family.name = "";
-        // live[1].checked = false;
-        // live[2].checked = false;
-        
-        // live[0].checked = false;
-        // live[5].checked = false;
-        // live[6].checked = false;
-      } else{
-        live_family_a.parentElement.style.display = "none";
-        live_family_b.parentElement.style.display = "none";
-    }
-    
-    //text
-    if (live_other.checked) {
-      $("#textlive").attr("required", "required");
-    } else {
-      $("#textlive").removeAttr("required");
-      $("#textlive").val(null);
-    }
-  }
-  document.querySelectorAll(".form-group-Quest-live input").forEach(function(e){
-    e.addEventListener("click", function(event) {
-      modifyLiveRequired();
-      $('form').parsley().validate("live");        
-      // setTimeout(function(){},500);
-      
-      // alert("OK");
-    });
-    
-  });
-
   //父母婚姻狀況
   var marriage = document.getElementsByName("marriage");
   //var marriage1 = document.getElementsByName('marriage1');
@@ -278,6 +175,112 @@ $(window).click(function (e_window) {
     $("#classname").val("");
   }
 });
+
+
+
+
+
+function modifyLiveRequired() {
+  //住宿狀況
+  // var live = document.getElementsByName("live");
+  // var live_useless = document.getElementsByName("useless");
+  var live_inschool = document.getElementById("radio38");
+  var live_notyet = document.getElementById("radio82");
+  var live_other = document.getElementById("radio41");
+  
+  var live_outside = document.getElementById("radio39");
+  var live_outside_a = document.getElementById("radio44");
+  var live_outside_b = document.getElementById("radio45");
+  var live_family = document.getElementById("radio40");
+  var live_family_a = document.getElementById("radio42");
+  var live_family_b = document.getElementById("radio43");
+
+  if (live_outside_a.checked || live_outside_b.checked || live_family_a.checked || live_family_b.checked) {
+    document.querySelectorAll(".live-inside-error").forEach(function(e) {
+      e.classList.remove("show");
+    })
+  }else{
+    document.querySelectorAll(".live-inside-error").forEach(function(e) {
+      e.classList.add("show");
+    })
+  }
+
+  // if((live[0].checked || live[5].checked || live[6].checked)&&(live_useless[0].checked||live_useless[1].checked)){
+  // }
+
+  // inside out
+  // if((live_useless[0].checked&&!live[1].checked&&!live[2].checked)||(live_useless[1].checked&&!live[3].checked&&!live[4].checked)){
+  //   live_useless[0].checked = false;
+  //   live_useless[1].checked = false;
+
+  // }
+  
+  // too many target
+  // console.log(e_window.target);
+
+  
+  if(live_outside.checked || live_family.checked){
+    live_outside_a.required = true;
+    live_outside_b.required = true;
+    live_family_a.required = true;
+    live_family_b.required = true;
+  }else{
+    live_outside_a.required = false;
+    live_outside_b.required = false;
+    live_family_a.required = false;
+    live_family_b.required = false;
+  }
+    //校外租賃
+  if (live_outside.checked) {
+    live_outside_a.parentElement.style.display = "block";
+    live_outside_b.parentElement.style.display = "block";
+    live_family_a.checked = false;
+    live_family_b.checked = false;
+    // live_outside.name = "";
+    console.log("P1");
+    
+    // live[3].checked = false;
+    // live[4].checked = false;
+    
+    // live[0].checked = false;
+    // live[5].checked = false;
+    // live[6].checked = false;
+    
+    // if(live_useless[0].checked||live[5].checked||live[6].checked){
+      //   live_useless[0].checked = false;
+      //   live_useless[1].checked = false;
+      // }
+      
+    } else{
+      live_outside_a.parentElement.style.display = "none";
+      live_outside_b.parentElement.style.display = "none";
+    }
+    //父母家
+    if (live_family.checked) {
+      live_family_a.parentElement.style.display = "block";
+      live_family_b.parentElement.style.display = "block";
+      live_outside_a.checked = false;
+      live_outside_b.checked = false;
+      // live_family.name = "";
+      // live[1].checked = false;
+      // live[2].checked = false;
+      
+      // live[0].checked = false;
+      // live[5].checked = false;
+      // live[6].checked = false;
+    } else{
+      live_family_a.parentElement.style.display = "none";
+      live_family_b.parentElement.style.display = "none";
+  }
+  
+  //text
+  if (live_other.checked) {
+    $("#textlive").attr("required", "required");
+  } else {
+    $("#textlive").removeAttr("required");
+    $("#textlive").val(null);
+  }
+}
 
 $("#checkbox2").click(function () {
   if (confirm("您選擇不同意，按下確定後將會立即返回首頁。")) {
