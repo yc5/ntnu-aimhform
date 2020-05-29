@@ -1,0 +1,422 @@
+﻿<style>
+    /*#FBE8EC 紅燈 / #FBF7E8 黃燈 / #F5FBE8 綠燈*/
+
+    #light-bg-r {
+        background-color: #FBE8EC;
+    }
+
+    #light-bg-g {
+        background-color: #F5FBE8;
+    }
+
+    #light-bg-y {
+        background-color: #FBF7E8;
+    }
+</style>
+
+<script type="text/javascript">
+    $(".card-box").addClass("normal-box");
+
+</script>
+@*<div class="panel-default">
+        <h1>@ViewBag.Light</h1>
+        <p>@ViewBag.StudentContent</p>
+    </div>*@
+@{
+    var lightBgId = string.Empty;
+    if (ViewBag.Light == "1綠燈。")
+    {
+        lightBgId = "light-bg-g";
+    }
+    else if (ViewBag.Light == "2黃燈。")
+    {
+        lightBgId = "light-bg-y";
+    }
+    else if (ViewBag.Light == "3紅燈。")
+    {
+        lightBgId = "light-bg-r";
+    }
+    else
+    {
+        @*<h1>沒有特別敘述。</h1>*@
+        <div class="light-box">
+            <img src="../../images/checklist-h120.png" width="84" height="120" />
+        </div>
+    }
+
+}
+<div class="panelScore-default">
+    <h1>@*最新量表填答結果*@</h1>
+    <h1>Result</h1>
+
+    <div class="score-box" id="@lightBgId">
+
+        <div class="light-box">
+            <img src="../../images/checklist-h120.png" width="84" height="120" />
+        </div>
+
+        <div class="warning-info">
+            <p id="Content" style="margin-top: 20px;">@ViewBag.StudentContent</p>
+        </div>
+    </div>
+    @*@if (ViewBag.Light == "3紅燈。")
+        {
+            using (Ajax.BeginForm("UpdateConsult", "AIMHtest", new
+            {
+                tid = ViewBag.tid
+            }, new AjaxOptions() { OnSuccess = "updateOK" }, new { id = "consultForm" }))
+            {
+                <div class="askHelp">
+                    ★ 您是否願意學校輔導諮商中心的老師主動關心您的狀況呢？
+                    <input type="radio" name="consult" id="consult" value="1" />
+                    是
+                    <input type="radio" name="consult" id="consult" value="2" />
+                    否
+                </div>
+            }
+        }*@
+    <div class="scoreTitle score-S">
+        <h2>Subscales information</h2>
+        <table width="100%" border="0" cellspacing="5" cellpadding="5">
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>S01</td>
+                    <td>S02</td>
+                    <td>S03</td>
+                    <td>S04</td>
+                    <td>S05</td>
+                    <td>S06</td>
+                    <td>S07</td>
+                    <td>S08</td>
+                    <td>S09</td>
+                    <td>S10</td>
+                    <td>S11</td>
+                    <td>S12</td>
+                </tr>
+                @*<tr valign="top">
+                        <td width="50">&nbsp;</td>
+                        <td>同儕與人際互動</td>
+                        <td>家庭功能影響</td>
+                        <td>親近與親密關係</td>
+                        <td>課業與作息變化</td>
+                        <td>網路經驗與霸凌</td>
+                        <td>性別認同壓力</td>
+                        <td>情境誘發情緒</td>
+                        <td>生氣與衝動控制</td>
+                        <td>憤怒表達與攻擊</td>
+                        <td>負向認知</td>
+                        <td>憂鬱相關症狀</td>
+                        <td>自傷意念</td>
+                    </tr>*@
+                <tr>
+                    <td align="center" valign="middle">健康狀況</td>
+                    <td id="lightS01" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS02" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS03" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS04" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS05" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS06" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS07" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS08" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS09" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS10" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS11" align="center" valign="top">&nbsp;</td>
+                    <td id="lightS12" align="center" valign="top">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <session id="scaleInfo-S">
+            <div class="container">
+                <div class="row">
+                    <div class="scaleitemBox scaleS">
+                        <h2 class="scaleinfoTitle">Subscales information</h2>
+                        <div>
+                            <div class="col4-1">
+                                <h4 class="scaleitemTitle">S01 Peer and Interpersonal Interactions</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes how well the individual interacts with classmates or friends, builds proper relationships with peers, as well as gets support from interpersonal interactions.</div>
+                            </div>
+                            <div class="col4-2">
+                                <h4 class="scaleitemTitle">S02 Influence of Family Function</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">
+                                    This subscale indicates the wellness of family functions, possible stressors from family expectations, and whether or not they are being affected by conflicts in the family.</div>
+                            </div>
+                            <div class="col4-3">
+                                <h4 class="scaleitemTitle">S03 Close and Intimate Relationships</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale indicates how the quality of close or intimate relationships (friendship or romantic relationship) has an impact on his/ her life recently.</div>
+                            </div>
+                            <div class="col4-4">
+                                <h4 class="scaleitemTitle">S04 School Work and Life Schedule</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes the capacity of school work and life schedule adjustment, whether the student can manage school stress and maintain normal life schedules, so that she/he does not live in a reversed day-and-night schedule, stay up late, or skip classes.</div>
+                            </div>
+                        </div>
+                        <div style="float:left;">
+                            <div class="col4-1">
+                                <h4 class="scaleitemTitle">S05 Internet Experiences and Bully</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes whether or not the student had experiences of being bullied or being hurt by online criticism and attacks. These experiences may make the student no longer trust friends or others.</div>
+                            </div>
+                            <div class="col4-2">
+                                <h4 class="scaleitemTitle">S06 Sexual Orientation Identity Stress</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale indicates whether sexual orientation identity is a stressor. For example, worries about parents or other people not accepting his/her sexual orientation.</div>
+                            </div>
+                            <div class="col4-3">
+                                <h4 class="scaleitemTitle">S07 Environment-induced Emotions</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes how easy it is to experience emotional ups and downs by non-specific factors, such as raining days, long holidays, being alone and all in one’s head, or thinking of past experiences of being treated unfairly.</div>
+                            </div>
+                            <div class="col4-4">
+                                <h4 class="scaleitemTitle">S08 Anger and Compulsiveness Control</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes the capacity to regulate anger and control impulsive behavior.</div>
+                            </div>
+                        </div>
+                        <div style="float:left;">
+                            <div class="col4-1">
+                                <h4 class="scaleitemTitle">S09 Expression of Anger and Attack</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale indicates the tendencies to express anger and emotions via actions, such as harassing others, breaking windows and doors, or posting messages online to express anger or threats.</div>
+                            </div>
+                            <div class="col4-2">
+                                <h4 class="scaleitemTitle">S10 Negative Cognition</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes whether or not having focus in life, hope towards future, sense of value or self-doubts, or feeling confused about meanings of life.</div>
+                            </div>
+                            <div class="col4-3">
+                                <h4 class="scaleitemTitle">S11 Depression Related Symptoms</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale describes the emotional status, whether the student may feel down easily, anxious and restless, powerless and empty, or irritable and uncontrollable.</div>
+                            </div>
+                            <div class="col4-4">
+                                <h4 class="scaleitemTitle">S12 Self-harm Ideation</h4>
+                                <div class="scaleItem">info</div>
+                                <div class="scaleitemInfo">This subscale indicates recent tendencies or intention of self-harm or suicide.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </session>
+    </div>
+    <div class="btn-scorebox">
+        @*<span style="color: red;">備註：查閱成績之後，就不能重新測驗</span>*@
+        <!-- <button id="sendAnser" class="btn btn-default" value="重新測驗 " onclick="location.href='/AIMHtest/TestStart'" style="margin-right: 10px; ">重新測驗</button>
+        <button id="sendAnser" class="btn btn-default" value="回首頁" onclick="location.href='/AIMHtestIndex/'">回首頁</button>-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            GetData();
+            $("input[type = radio]").click(function () {
+                // console.log("OK");
+                $("#consultForm").submit();
+            });
+
+
+        }
+    );
+    function updateOK() {
+        alert("資料更新成功");
+    };
+
+    function GetData() {
+        //要傳給後端的資料，把整個表單內容序列化
+        var postData = {
+            "uid": "@ViewBag.uid",
+            "sid": "@ViewBag.sid",
+            "tid": "@ViewBag.tid"
+        };
+
+        $.ajax({
+            //要取得資料的action
+            url: '@Url.Action("GetScoreResultJSON","Manager")',
+            type: "POST",
+            data: postData,
+            dataType: "json",
+            async: false,
+            cache: false,
+            success: function (data) {
+                if (data) {
+                    //console顯示資料內容
+                    console.log(data);
+                    if (data.lightS01 == null || data.lightS01 == "") {
+                        //window.location.href = 'AIMHtest/NoData';
+                        console.log(data.lightS01);
+                        $("#Content").css("display", "none");
+                        alert("請確認成績資料，目前沒有相關成績資訊。");
+                    } else {
+
+                        //把後來response後的資料顯示在TEXT(取的data的name成員)
+                        $('#lightS01').val(data.lightS01);
+                        if (data.lightS01 == 0) {
+                            $('#lightS01').css('background-color', '');
+                        }
+                        if (data.lightS01 == 1) {
+                            $('#lightS01').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS01 == 2) {
+                            $('#lightS01').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS01 == 3) {
+                            $('#lightS01').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS02').val(data.lightS02);
+                        if (data.lightS02 == 0) {
+                            $('#lightS02').css('background-color', '');
+                        }
+                        if (data.lightS02 == 1) {
+                            $('#lightS02').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS02 == 2) {
+                            $('#lightS02').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS02 == 3) {
+                            $('#lightS02').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS03').val(data.lightS03);
+                        if (data.lightS03 == 0) {
+                            $('#lightS03').css('background-color', '');
+                        }
+                        if (data.lightS03 == 1) {
+                            $('#lightS03').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS03 == 2) {
+                            $('#lightS03').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS03 == 3) {
+                            $('#lightS03').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS04').val(data.lightS04);
+                        if (data.lightS04 == 0) {
+                            $('#lightS04').css('background-color', '');
+                        }
+                        if (data.lightS04 == 1) {
+                            $('#lightS04').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS04 == 2) {
+                            $('#lightS04').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS04 == 3) {
+                            $('#lightS04').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS05').val(data.lightS05);
+                        if (data.lightS05 == 0) {
+                            $('#lightS05').css('background-color', '');
+                        }
+                        if (data.lightS05 == 1) {
+                            $('#lightS05').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS05 == 2) {
+                            $('#lightS05').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS05 == 3) {
+                            $('#lightS05').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS06').val(data.lightS06);
+                        if (data.lightS06 == 0) {
+                            $('#lightS06').css('background-color', '');
+                        }
+                        if (data.lightS06 == 1) {
+                            $('#lightS06').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS06 == 2) {
+                            $('#lightS06').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS06 == 3) {
+                            $('#lightS06').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS07').val(data.lightS07);
+                        if (data.lightS07 == 0) {
+                            $('#lightS07').css('background-color', '');
+                        }
+                        if (data.lightS07 == 1) {
+                            $('#lightS07').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS07 == 2) {
+                            $('#lightS07').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS07 == 3) {
+                            $('#lightS07').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS08').val(data.lightS08);
+                        if (data.lightS08 == 0) {
+                            $('#lightS08').css('background-color', '');
+                        }
+                        if (data.lightS08 == 1) {
+                            $('#lightS08').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS08 == 2) {
+                            $('#lightS08').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS08 == 3) {
+                            $('#lightS08').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS09').val(data.lightS09);
+                        if (data.lightS09 == 0) {
+                            $('#lightS09').css('background-color', '');
+                        }
+                        if (data.lightS09 == 1) {
+                            $('#lightS09').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS09 == 2) {
+                            $('#lightS09').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS09 == 3) {
+                            $('#lightS09').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS10').val(data.lightS10);
+                        if (data.lightS10 == 0) {
+                            $('#lightS10').css('background-color', '');
+                        }
+                        if (data.lightS10 == 1) {
+                            $('#lightS10').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS10 == 2) {
+                            $('#lightS10').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS10 == 3) {
+                            $('#lightS10').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS11').val(data.lightS11);
+                        if (data.lightS11 == 0) {
+                            $('#lightS11').css('background-color', '');
+                        }
+                        if (data.lightS11 == 1) {
+                            $('#lightS11').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS11 == 2) {
+                            $('#lightS11').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS11 == 3) {
+                            $('#lightS11').css('background-color', '#ee6e55');
+                        }
+                        $('#lightS12').val(data.lightS12);
+                        if (data.lightS12 == 0) {
+                            $('#lightS12').css('background-color', '');
+                        }
+                        if (data.lightS12 == 1) {
+                            $('#lightS12').css('background-color', '#a1c969');
+                        }
+                        if (data.lightS12 == 2) {
+                            $('#lightS12').css('background-color', '#ffd517');
+                        }
+                        if (data.lightS12 == 3) {
+                            $('#lightS12').css('background-color', '#ee6e55');
+                        }
+                    }
+                } else {
+                    alert("NO DATA!");
+                }
+            }
+        });
+    }
+</script>
