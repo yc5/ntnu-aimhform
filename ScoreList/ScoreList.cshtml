@@ -154,11 +154,12 @@
                         <input class="file-print-btn" type="submit" value="匯出名單" name="button" />
                         <input class="file-print-btn" type="submit" value="列印結果" name="button" />
                         <input class="file-print-btn" type="submit" value="重新填答" name="button" onclick="return reTest()" />
+                        <span style="background-color: #f8e7c7; font-weight: bold; font-size: 14px; text-align: center; width: 600px; padding: 0 5em;">橘色部份為量表各因子成績(平均題分) </span>
                     </div>
                     <div>
                         <!-- <div class="listnum">總共 200 筆</div> -->
                         <div class="scorelist-table">
-                            <table width="2000" align="center" border="0" cellspacing="4" cellpadding="4">
+                            <table width="2000" align="center" border="0" cellspacing="4" cellpadding="4" class="sortable-theme-dark" data-sortable>
                                 <thead>
                                     <tr>
                                         <th rowspan="2" align="center" bgcolor="#CCCCCC">
@@ -180,9 +181,7 @@
                                         <th rowspan="2" align="center" bgcolor="#CCCCCC">同意書</th>
                                         <th rowspan="2" align="center" bgcolor="#CCCCCC">施測狀態</th>
                                         <th rowspan="2" align="center" bgcolor="#CCCCCC"><img src="../../images/pencil.png" width="20" height="20" /></th>
-                                        <th colspan="20" align="center" bgcolor="#CCCCCC">量表各因子成績(平均題分)</th>
-                                    </tr>
-                                    <tr>
+                                        
                                         <th align="center" bgcolor="#f8e7c7">效度</th>
                                         <th align="center" bgcolor="#f8e7c7">AL</th>
                                         <th align="center" bgcolor="#f8e7c7">D1</th>
@@ -205,11 +204,12 @@
                                         <th align="center" bgcolor="#f8e7c7">S12</th>
                                     </tr>
                                 </thead>
+                                <tbody class="listnum">
                                 @if (Model.ScoreListViewModelList != null)
                                 {
                                     foreach (var item in Model.ScoreListViewModelList)
                                     {
-                                        <tbody class="listnum">
+                                        @* <tbody class="listnum"> *@
                                             <tr>
                                                 <td>
                                                     @*<input type="checkbox" id="checkboxs" name="checkbox" value="@item.StuIdEncrypt" />*@
@@ -289,10 +289,11 @@
                                                 <td>@item.S10ScoreAvg</td>
                                                 <td>@item.S11ScoreAvg</td>
                                                 <td>@item.S12ScoreAvg</td>
-                                        </tbody>
+                                        @* </tbody> *@
 
                                     }
                                 }
+                                </tbody>
                             </table>
                         </div>
                     </div>
